@@ -55,7 +55,7 @@ extension ContainerViewController: HomeViewControllerDelegate {
                     initialSpringVelocity: 0,
                     options: .curveEaseInOut
                 ) {
-                    self.navVC?.view.frame.origin.x = self.homeVC.view.frame.size.width - 100
+                    self.navVC?.view.frame.origin.x = self.homeVC.view.frame.size.width
                 } completion: { [weak self] done in
                     if done {
                         self?.menuState = .opened
