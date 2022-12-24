@@ -10,15 +10,6 @@ import UIKit
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private enum MenuOptions: String, CaseIterable {
-        case planner = "Plānotājs"
-        case process = "Process"
-        case subjects = "Priekšmeti"
-        case tests = "Pārbaudes darbi"
-        case achievments = "Sasniegumi"
-        case payments = "Maksājumi"
-        case exams = "Eksāmeni"
-    }
     private let tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -27,7 +18,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }()
     private let closeButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-        button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.setImage(UIImage(named: "CloseIcon"), for: .normal)
         
         return button
     }()
@@ -102,13 +93,13 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MenuOptions.allCases.count
+        return NavigationItems.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = MenuOptions.allCases[indexPath.row].rawValue
+        cell.textLabel?.text = NavigationItems[indexPath.row].name
         cell.textLabel?.textColor = .white
         
         return cell
