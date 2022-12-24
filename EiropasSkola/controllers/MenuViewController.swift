@@ -12,7 +12,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private let tableView: UITableView = {
         let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(NavigationTableViewCell.self, forCellReuseIdentifier: NavigationTableViewCell.identifier)
         
         return table
     }()
@@ -51,7 +51,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             x: 0,
             y: 0,
             width: view.bounds.size.width,
-            height: view.bounds.size.height
+            height: view.bounds.size.height - closeButton.bounds.size.width - 50
         )
         tableView.backgroundView = nil
         tableView.backgroundColor = UIColor.clear
@@ -98,17 +98,26 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = NavigationItems[indexPath.row].name
-        cell.textLabel?.textColor = .white
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: NavigationTableViewCell.identifier,
+            for: indexPath
+        ) as? NavigationTableViewCell else { return UITableViewCell() }
+        cell.configure(
+            text: NavigationItems[indexPath.row].text,
+            icon: NavigationItems[indexPath.row].icon ?? UIImage()
+        )
         
         return cell
     }
     
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = UIColor.clear
-        cell.contentView.backgroundColor = UIColor.clear
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     
