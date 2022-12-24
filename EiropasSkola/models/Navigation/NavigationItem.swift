@@ -10,17 +10,17 @@ import UIKit
 
 
 public struct NavigationItem {
-    var name: String
+    var text: String
     var icon: UIImage?
 }
 
 
 public let NavigationItems = [
-    NavigationItem(name: "Plānotājs", icon: UIImage(named: "StarIcon")),
-    NavigationItem(name: "Process", icon: UIImage(named: "LayersIcon")),
-    NavigationItem(name: "Priekšmeti", icon: UIImage(named: "BookIcon.Open")),
-    NavigationItem(name: "Pārbaudes darbi", icon: UIImage(named: "FlagIcon")),
-    NavigationItem(name: "Sasniegumi", icon: UIImage(named: "AwardIcon")),
-    NavigationItem(name: "Maksājumi", icon: UIImage(named: "ShoppingBagIcon")),
-    NavigationItem(name: "Eksāmeni", icon: UIImage(named: "FlashIcon")),
+    NavigationItem(text: "Plānotājs", icon: UIImage(named: "StarIcon")),
+    NavigationItem(text: "Process", icon: UIImage(named: "LayersIcon")),
+    NavigationItem(text: "Priekšmeti", icon: UIImage(named: "BookIcon.Open")),
+    NavigationItem(text: "Pārbaudes darbi", icon: UIImage(named: "FlagIcon")),
+    NavigationItem(text: "Sasniegumi", icon: UIImage(named: "AwardIcon")),
+    NavigationItem(text: "Maksājumi", icon: UIImage(named: "ShoppingBagIcon")),
+    NavigationItem(text: "Eksāmeni", icon: UIImage(named: "FlashIcon")),
 ]
