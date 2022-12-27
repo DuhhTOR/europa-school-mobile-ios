@@ -8,7 +8,7 @@
 import UIKit
 
 
-class NavigationView: UIView {
+class MenuView: UIView {
 
     private let closeButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
@@ -70,7 +70,7 @@ class NavigationView: UIView {
 }
 
 
-extension NavigationView: UITableViewDataSource, UITableViewDelegate {
+extension MenuView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return NavigationItems.count
     }

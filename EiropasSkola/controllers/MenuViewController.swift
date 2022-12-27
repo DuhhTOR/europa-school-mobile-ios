@@ -8,10 +8,10 @@
 import UIKit
 
 
-class MenuViewController: UIViewController/*, UITableViewDelegate, UITableViewDataSource*/ {
+class MenuViewController: UIViewController {
     
     override func loadView() {
-        self.view = NavigationView(frame: UIScreen.main.bounds)
+        self.view = MenuView(frame: UIScreen.main.bounds)
     }
     
 
@@ -37,3 +37,4 @@ class MenuViewController: UIViewController/*, UITableViewDelegate, UITableViewDa
     }
     
 }
+
