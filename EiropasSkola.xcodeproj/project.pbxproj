@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8A4237072948FB9400147DB7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4237062948FB9400147DB7 /* MenuViewController.swift */; };
 		8A4237092948FBAC00147DB7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4237082948FBAC00147DB7 /* HomeViewController.swift */; };
+		8A84FEEA295B773300A6A6D0 /* MenuState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A84FEE9295B773300A6A6D0 /* MenuState.swift */; };
 		8A98DE7D2935139E00C9B91B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98DE7C2935139E00C9B91B /* AppDelegate.swift */; };
 		8A98DE7F2935139E00C9B91B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98DE7E2935139E00C9B91B /* SceneDelegate.swift */; };
 		8A98DE812935139E00C9B91B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98DE802935139E00C9B91B /* ContainerViewController.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		8A4237062948FB9400147DB7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		8A4237082948FBAC00147DB7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8A84FEE9295B773300A6A6D0 /* MenuState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuState.swift; sourceTree = "<group>"; };
 		8A98DE792935139E00C9B91B /* EiropasSkola.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EiropasSkola.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A98DE7C2935139E00C9B91B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A98DE7E2935139E00C9B91B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				8AD3D77F29575119000A4576 /* MenuView.swift */,
+				8A84FEE9295B773300A6A6D0 /* MenuState.swift */,
 			);
 			path = menu;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				8A98DE812935139E00C9B91B /* ContainerViewController.swift in Sources */,
 				8A98DE7D2935139E00C9B91B /* AppDelegate.swift in Sources */,
 				8AD844802954E6570074EC73 /* MenuTableViewCell.swift in Sources */,
+				8A84FEEA295B773300A6A6D0 /* MenuState.swift in Sources */,
 				8A98DE7F2935139E00C9B91B /* SceneDelegate.swift in Sources */,
 				8A4237072948FB9400147DB7 /* MenuViewController.swift in Sources */,
 			);
