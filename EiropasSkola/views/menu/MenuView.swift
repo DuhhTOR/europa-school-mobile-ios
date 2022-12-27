@@ -72,7 +72,7 @@ class MenuView: UIView {
 
 extension MenuView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return NavigationItems.count
+        return MenuItems.count
     }
 
 
@@ -87,8 +87,8 @@ extension MenuView: UITableViewDataSource, UITableViewDelegate {
             for: indexPath
         ) as? NavigationTableViewCell else { return UITableViewCell() }
         cell.configure(
-            text: NavigationItems[indexPath.row].text,
-            icon: NavigationItems[indexPath.row].icon
+            text: MenuItems[indexPath.row].text,
+            icon: MenuItems[indexPath.row].icon
         )
 
         return cell
