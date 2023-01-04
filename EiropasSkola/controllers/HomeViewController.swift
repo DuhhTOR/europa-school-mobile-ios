@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol HomeViewControllerDelegate: AnyObject {
-    func didTapMenuButton()
+    func didTapOpenMenuButton()
 }
 
 
@@ -26,12 +26,12 @@ class HomeViewController: UIViewController {
             image: UIImage(systemName: "list.dash"),
             style: .done,
             target: self,
-            action: #selector(didTapMenuButton)
+            action: #selector(didTapOpenMenuButton)
         )
     }
     
     
-    @objc func didTapMenuButton() {
-        delegate?.didTapMenuButton()
+    @objc func didTapOpenMenuButton() {
+        delegate?.didTapOpenMenuButton()
     }
 }
