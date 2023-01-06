@@ -23,11 +23,12 @@ class HomeViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "list.dash"),
+            image: UIImage(named: "BurgerMenuIcon"),
             style: .done,
             target: self,
             action: #selector(didTapOpenMenuButton)
         )
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.white
     }
     
     
