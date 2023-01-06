@@ -14,6 +14,7 @@
 		8A98DE7F2935139E00C9B91B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98DE7E2935139E00C9B91B /* SceneDelegate.swift */; };
 		8A98DE812935139E00C9B91B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98DE802935139E00C9B91B /* ContainerViewController.swift */; };
 		8A98DE86293513A100C9B91B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A98DE85293513A100C9B91B /* Assets.xcassets */; };
+		8A996A332968B49100EC013F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A996A322968B49100EC013F /* MenuView.swift */; };
 		8AD3D77329571D88000A4576 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD3D77229571D88000A4576 /* MenuItem.swift */; };
 		8AD3D77D29574B81000A4576 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AD3D77A29574B81000A4576 /* LaunchScreen.storyboard */; };
 		8AD844802954E6570074EC73 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD8447F2954E6570074EC73 /* MenuTableViewCell.swift */; };
@@ -29,6 +30,7 @@
 		8A98DE802935139E00C9B91B /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		8A98DE85293513A100C9B91B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A98DE8A293513A100C9B91B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A996A322968B49100EC013F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		8AD3D77229571D88000A4576 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		8AD3D77B29574B81000A4576 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AD8447F2954E6570074EC73 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				8AD8447F2954E6570074EC73 /* MenuTableViewCell.swift */,
+				8A996A322968B49100EC013F /* MenuView.swift */,
 			);
 			path = menu;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				8AD3D77329571D88000A4576 /* MenuItem.swift in Sources */,
 				8A98DE812935139E00C9B91B /* ContainerViewController.swift in Sources */,
 				8A98DE7D2935139E00C9B91B /* AppDelegate.swift in Sources */,
+				8A996A332968B49100EC013F /* MenuView.swift in Sources */,
 				8AD844802954E6570074EC73 /* MenuTableViewCell.swift in Sources */,
 				8A84FEEA295B773300A6A6D0 /* MenuState.swift in Sources */,
 				8A98DE7F2935139E00C9B91B /* SceneDelegate.swift in Sources */,

@@ -28,11 +28,12 @@ class ContainerViewController: UIViewController {
         addChild(menuVC)
         view.addSubview(menuVC.view)
         menuVC.didMove(toParent: self)
-        menuVC.delegate = self
+        menuVC.menuView.delegate = self
         
         homeVC.delegate = self
         
         let navVC = UINavigationController(rootViewController: homeVC)
+        navVC.navigationBar.backgroundColor  = .blue
         addChild(navVC)
         view.addSubview(navVC.view)
         navVC.didMove(toParent: self)
@@ -41,7 +42,7 @@ class ContainerViewController: UIViewController {
 }
 
 
-extension ContainerViewController: HomeViewControllerDelegate, MenuViewControllerDelegate {
+extension ContainerViewController: HomeViewControllerDelegate, MenuViewDelegate {
     
     func didTapOpenMenuButton() {
         guard menuState == .closed else {

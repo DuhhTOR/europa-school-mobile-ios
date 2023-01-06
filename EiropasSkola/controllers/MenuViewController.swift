@@ -8,96 +8,28 @@
 import UIKit
 
 
-protocol MenuViewControllerDelegate: AnyObject {
-    func didTapCloseMenuButton()
-}
-
-
 class MenuViewController: UIViewController {
     
-    weak var delegate: MenuViewControllerDelegate?
-    
-    
-    private let closeButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-        button.setImage(UIImage(named: "CloseIcon"), for: .normal)
-        
-        return button
-    }()
-    
-    private let tableView: UITableView = {
-        let table = UITableView()
-        table.register(NavigationTableViewCell.self, forCellReuseIdentifier: NavigationTableViewCell.identifier)
-        table.backgroundView = nil
-        table.backgroundColor = UIColor.clear
-        
-        return table
+    public let menuView: MenuView = {
+        return MenuView(frame: UIScreen.main.bounds)
     }()
     
     
-    // MARK: lifecyle func
+    override func loadView() {
+        self.view = menuView
+    }
+    
+    
     override func viewDidLoad() {
-        view.addSubview(closeButton)
-        view.addSubview(tableView)
+        super.viewDidLoad()
         
-        closeButton.addTarget(self, action: #selector(didTapCloseMenuButton) , for: .touchUpInside)
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        addConstraints()
-    }
-    
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        view.layer.insertSublayer(setGradientBackground(), at: 0)
-    }
-    
-    
-    // MARK: private function
-    private func addConstraints() {
-        [closeButton, tableView].forEach { subview in
-            subview.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
-        NSLayoutConstraint.activate([
-            closeButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            
-            tableView.topAnchor.constraint(equalTo: closeButton.safeAreaLayoutGuide.bottomAnchor, constant: 30),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-        ])
-    }
-    
-    
-    private func setGradientBackground() -> CAGradientLayer {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [
-            UIColor(red: 0.047, green: 0.137, blue: 0.251, alpha: 1).cgColor,
-            UIColor(red: 0.204, green: 0.286, blue: 0.369, alpha: 1).cgColor
-        ]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
-        gradientLayer.locations = [0, 1]
-        gradientLayer.frame = view.bounds
-
-       return gradientLayer
-    }
-    
-    
-    // MARK: actions
-    @objc func didTapCloseMenuButton() {
-        delegate?.didTapCloseMenuButton()
+        menuView.tableView.delegate = self
+        menuView.tableView.dataSource = self
     }
     
 }
 
 
-// MARK: UITableViewDataSource and UITableViewDelegate extension
 extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MenuItems.count
