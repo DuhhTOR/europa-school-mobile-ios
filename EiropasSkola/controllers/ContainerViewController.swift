@@ -10,31 +10,37 @@ import UIKit
 
 class ContainerViewController: UIViewController {
     
+    // MARK: - Private variables
+    
     private var menuState: MenuState = .closed
     private let menuViewController = MenuViewController()
     private let homeViewController = HomeViewController()
     private var navigationViewController: UINavigationController?
 
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        setNeedsStatusBarAppearanceUpdate()
-    }
+    // MARK: - Lifecycle
     
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
-    }
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addChildVCs()
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setNeedsStatusBarAppearanceUpdate()
+    }
 
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
 
+    
+    // MARK: - Private functions
+    
     private func addChildVCs() {
         addChild(menuViewController)
         view.addSubview(menuViewController.view)

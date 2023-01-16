@@ -10,10 +10,14 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
+    // MARK: - Public variables
+    
     public let menuView: MenuView = {
         return MenuView(frame: UIScreen.main.bounds)
     }()
     
+    
+    // MARK: - Lifecycle
     
     override func loadView() {
         self.view = menuView
@@ -45,11 +49,11 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: NavigationTableViewCell.identifier,
             for: indexPath
-        ) as? NavigationTableViewCell else { return UITableViewCell() }
-        cell.configure(
-            text: MenuItems[indexPath.row].text,
-            icon: MenuItems[indexPath.row].icon
-        )
+        ) as? NavigationTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.configure(with: MenuItems[indexPath.row])
 
         return cell
     }

@@ -15,9 +15,13 @@ protocol HomeViewControllerDelegate: AnyObject {
 
 class HomeViewController: UIViewController {
     
+    // MARK: - Public variables
+    
     public weak var delegate: HomeViewControllerDelegate?
     
 
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,6 +72,8 @@ class HomeViewController: UIViewController {
         ]
     }
     
+    
+    // MARK: - Objective C functions
     
     @objc func didTapOpenMenuButton() {
         delegate?.didTapOpenMenuButton()

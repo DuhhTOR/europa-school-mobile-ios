@@ -10,21 +10,31 @@ import UIKit
 
 class NavigationTableViewCell: UITableViewCell {
     
+    // MARK: - Public static variables
+    
     public static let identifier = "NavigationTableViewCell"
+    
+    // MARK: - Private variables
     
     private let itemIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
     }()
     private let itemLabel: UILabel = {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.19
+        
         let label = UILabel()
         label.font = UIFont(name: "IBMPlexSans-Medium", size: 16)
         label.textColor = UIColor(red: 0.922, green: 0.929, blue: 0.937, alpha: 1)
-        var paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 1.19
-        label.attributedText = NSMutableAttributedString(string: label.text ?? "", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        label.attributedText = NSMutableAttributedString(
+            string: label.text ?? "",
+            attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        )
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -32,10 +42,13 @@ class NavigationTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "ChevronIcon.Right")
         imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
     }()
     
+    
+    // MARK: - Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -51,19 +64,12 @@ class NavigationTableViewCell: UITableViewCell {
     }
     
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        itemIcon.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
-        itemLabel.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: itemIcon.frame.size.width - 20 - secondaryNavIcon.frame.size.width - 20,
-            height: contentView.frame.size.height
-        )
-        secondaryNavIcon.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+    required init?(coder: NSCoder) {
+        fatalError("init(code:) has not been implemented")
     }
     
+    
+    // MARK: - Overriden functions
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -73,36 +79,33 @@ class NavigationTableViewCell: UITableViewCell {
     }
     
     
-    required init?(coder: NSCoder) {
-        fatalError("init(code:) has not been implemented")
-    }
-    
+    // MARK: - Private functions
     
     private func addConstraints() {
-        let subviews = [itemIcon, itemLabel, secondaryNavIcon]
-        
-        subviews.forEach { subview in
-            subview.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
-        let constraints = [
+        NSLayoutConstraint.activate([
+            itemIcon.widthAnchor.constraint(equalToConstant: 24),
+            itemIcon.heightAnchor.constraint(equalToConstant: 24),
             itemIcon.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             itemIcon.centerYAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerYAnchor),
             
+            itemLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
             itemLabel.leadingAnchor.constraint(equalTo: itemIcon.safeAreaLayoutGuide.trailingAnchor, constant: 20),
-            itemLabel.centerYAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerYAnchor),
+            itemLabel.trailingAnchor.constraint(equalTo: secondaryNavIcon.safeAreaLayoutGuide.leadingAnchor, constant: -20),
+            itemLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor),
             
+            secondaryNavIcon.widthAnchor.constraint(equalToConstant: 24),
+            secondaryNavIcon.heightAnchor.constraint(equalToConstant: 24),
             secondaryNavIcon.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             secondaryNavIcon.centerYAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerYAnchor),
-        ]
-        
-        NSLayoutConstraint.activate(constraints)
+        ])
     }
     
     
-    public func configure(text: String, icon: UIImage?) {
-        itemIcon.image = icon
-        itemLabel.text = text
+    // MARK: - Public functions
+    
+    public func configure(with menuItem: MenuItem) {
+        itemIcon.image = menuItem.icon
+        itemLabel.text = menuItem.text
     }
 
 }

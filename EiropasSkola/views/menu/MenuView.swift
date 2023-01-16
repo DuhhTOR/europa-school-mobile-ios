@@ -15,22 +15,29 @@ protocol MenuViewDelegate: AnyObject {
 
 class MenuView: UIView {
     
+    // MARK: - Private variables
+    
     private let closeButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        let button = UIButton()
         button.setImage(UIImage(named: "CloseIcon"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
-
+    
+    // MARK: - Public variables
+    
     public let tableView: UITableView = {
         let table = UITableView()
         table.register(NavigationTableViewCell.self, forCellReuseIdentifier: NavigationTableViewCell.identifier)
+        table.translatesAutoresizingMaskIntoConstraints = false
         
         return table
     }()
-    
     public weak var delegate: MenuViewDelegate?
     
+    
+    // MARK: - Initialization
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,6 +51,13 @@ class MenuView: UIView {
     }
     
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    // MARK: - Overriden functions
+    
     override func layoutSubviews() {
         tableView.backgroundView = nil
         tableView.backgroundColor = UIColor.clear
@@ -52,14 +66,12 @@ class MenuView: UIView {
     }
     
     
+    // MARK: - Private functions
+    
     private func addConstraints() {
-        let subviews = [closeButton, tableView]
-        
-        subviews.forEach { subview in
-            subview.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
-        let constraints = [
+        NSLayoutConstraint.activate([
+            closeButton.heightAnchor.constraint(equalToConstant: 25),
+            closeButton.widthAnchor.constraint(equalToConstant: 25),
             closeButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
             closeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             
@@ -67,9 +79,7 @@ class MenuView: UIView {
             tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-        ]
-        
-        NSLayoutConstraint.activate(constraints)
+        ])
     }
     
     
@@ -88,13 +98,11 @@ class MenuView: UIView {
     }
     
     
+    // MARK: - Objective C functions
+    
     @objc func didTapCloseMenuButton() {
         delegate?.didTapCloseMenuButton()
     }
     
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
