@@ -5,23 +5,53 @@
 //  Created by Ervins on 24/12/2022.
 //
 
-import Foundation
 import UIKit
 
 
 public struct MenuItem {
-    let text: String
-    let icon: UIImage?
+    
+    // MARK: - Public variables
+    
+    public enum Page: String {
+        case planner = "Plānotājs"
+        case process = "Process"
+        case subjects = "Priekšmeti"
+        case tests = "Pārbaudes darbi"
+        case achievments = "Sasniegumi"
+        case payments = "Maksājumi"
+        case exams = "Eksāmeni"
+        
+        var icon: String {
+            switch self {
+                case .planner:
+                    return "StarIcon"
+                case .process:
+                    return "LayersIcon"
+                case .subjects:
+                    return "BookIcon.Open"
+                case .tests:
+                    return "FlagIcon"
+                case .achievments:
+                    return "AwardIcon"
+                case .payments:
+                    return "ShoppingBagIcon"
+                case .exams:
+                    return "FlashIcon"
+            }
+        }
+    }
+    public let type: Page
+    public let name: String
+    public let icon: UIImage?
+    
+    
+    // MARK: - Initialization
+    
+    init(type: Page) {
+        self.type = type
+        self.name = self.type.rawValue
+        self.icon = UIImage(named: self.type.icon)
+    }
+    
 }
-
-
-public let MenuItems: [MenuItem] = [
-    .init(text: "Plānotājs", icon: UIImage(named: "StarIcon")),
-    .init(text: "Process", icon: UIImage(named: "LayersIcon")),
-    .init(text: "Priekšmeti", icon: UIImage(named: "BookIcon.Open")),
-    .init(text: "Pārbaudes darbi", icon: UIImage(named: "FlagIcon")),
-    .init(text: "Sasniegumi", icon: UIImage(named: "AwardIcon")),
-    .init(text: "Maksājumi", icon: UIImage(named: "ShoppingBagIcon")),
-    .init(text: "Eksāmeni", icon: UIImage(named: "FlashIcon")),
-]
 

@@ -105,7 +105,7 @@ class NavigationTableViewCell: UITableViewCell {
     
     public func configure(with menuItem: MenuItem) {
         itemIcon.image = menuItem.icon
-        itemLabel.text = menuItem.text
+        itemLabel.text = menuItem.name
     }
 
 }

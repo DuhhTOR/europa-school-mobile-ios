@@ -10,6 +10,21 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
+    // MARK: - Private variables
+    
+    private let menuItems: [MenuItem] = {
+       return [
+        .init(type: .planner),
+        .init(type: .process),
+        .init(type: .subjects),
+        .init(type: .tests),
+        .init(type: .achievments),
+        .init(type: .payments),
+        .init(type: .exams),
+       ]
+    }()
+    
+    
     // MARK: - Public variables
     
     public let menuView: MenuView = {
@@ -36,7 +51,7 @@ class MenuViewController: UIViewController {
 
 extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MenuItems.count
+        return menuItems.count
     }
 
 
@@ -53,7 +68,7 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        cell.configure(with: MenuItems[indexPath.row])
+        cell.configure(with: menuItems[indexPath.row])
 
         return cell
     }

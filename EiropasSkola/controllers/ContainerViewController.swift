@@ -23,7 +23,7 @@ class ContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addChildVCs()
+        addChildViewControllers()
     }
     
     
@@ -41,7 +41,7 @@ class ContainerViewController: UIViewController {
     
     // MARK: - Private functions
     
-    private func addChildVCs() {
+    private func addChildViewControllers() {
         addChild(menuViewController)
         view.addSubview(menuViewController.view)
         menuViewController.didMove(toParent: self)
