@@ -8,12 +8,18 @@
 import UIKit
 
 
+protocol MenuViewControllerDelegate: AnyObject {
+    func didSelect(menuItem: MenuItem)
+}
+
+
 class MenuViewController: UIViewController {
     
     // MARK: - Private variables
     
     private let menuItems: [MenuItem] = {
        return [
+        .init(type: .home),
         .init(type: .planner),
         .init(type: .process),
         .init(type: .subjects),
@@ -24,9 +30,9 @@ class MenuViewController: UIViewController {
        ]
     }()
     
-    
     // MARK: - Public variables
     
+    public weak var delegate: MenuViewControllerDelegate?
     public let menuView: MenuView = {
         return MenuView(frame: UIScreen.main.bounds)
     }()
@@ -81,6 +87,8 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        delegate?.didSelect(menuItem: menuItems[indexPath.row])
     }
 }
 

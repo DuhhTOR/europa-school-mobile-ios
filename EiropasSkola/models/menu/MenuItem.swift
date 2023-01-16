@@ -12,7 +12,8 @@ public struct MenuItem {
     
     // MARK: - Public variables
     
-    public enum Page: String {
+    public enum Pages: String {
+        case home = "Sākums"
         case planner = "Plānotājs"
         case process = "Process"
         case subjects = "Priekšmeti"
@@ -23,31 +24,40 @@ public struct MenuItem {
         
         var icon: String {
             switch self {
+                case .home:
+                    return "house.fill"
+                    
                 case .planner:
                     return "StarIcon"
+                    
                 case .process:
                     return "LayersIcon"
+                    
                 case .subjects:
                     return "BookIcon.Open"
+                    
                 case .tests:
                     return "FlagIcon"
+                    
                 case .achievments:
                     return "AwardIcon"
+                    
                 case .payments:
                     return "ShoppingBagIcon"
+                    
                 case .exams:
                     return "FlashIcon"
             }
         }
     }
-    public let type: Page
+    public let type: Pages
     public let name: String
     public let icon: UIImage?
     
     
     // MARK: - Initialization
     
-    init(type: Page) {
+    init(type: Pages) {
         self.type = type
         self.name = self.type.rawValue
         self.icon = UIImage(named: self.type.icon)

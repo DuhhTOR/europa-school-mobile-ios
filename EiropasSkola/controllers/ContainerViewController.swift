@@ -16,6 +16,8 @@ class ContainerViewController: UIViewController {
     private let menuViewController = MenuViewController()
     private let homeViewController = HomeViewController()
     private var navigationViewController: UINavigationController?
+    private lazy var plannerViewController = PlannerViewController()
+    private var currentViewController: UIViewController?
 
     
     // MARK: - Lifecycle
@@ -46,6 +48,7 @@ class ContainerViewController: UIViewController {
         view.addSubview(menuViewController.view)
         menuViewController.didMove(toParent: self)
         menuViewController.menuView.delegate = self
+        menuViewController.delegate = self
         
         homeViewController.delegate = self
         
@@ -57,6 +60,8 @@ class ContainerViewController: UIViewController {
         view.addSubview(navigationViewController.view)
         navigationViewController.didMove(toParent: self)
         self.navigationViewController = navigationViewController
+        
+        self.currentViewController = homeViewController
     }
     
     
@@ -108,7 +113,7 @@ class ContainerViewController: UIViewController {
 
 extension ContainerViewController: HomeViewControllerDelegate, MenuViewDelegate {
     
-    func didTapOpenMenuButton() {
+    internal func didTapOpenMenuButton() {
         guard menuState == .closed else {
             return
         }
@@ -129,7 +134,7 @@ extension ContainerViewController: HomeViewControllerDelegate, MenuViewDelegate 
     }
     
     
-    func didTapCloseMenuButton() {
+    internal func didTapCloseMenuButton() {
         guard menuState == .opened else {
             return
         }
@@ -147,6 +152,66 @@ extension ContainerViewController: HomeViewControllerDelegate, MenuViewDelegate 
                 self?.menuState = .closed
             }
         }
+    }
+    
+}
+
+
+extension ContainerViewController: MenuViewControllerDelegate {
+    
+    internal func didSelect(menuItem: MenuItem) {
+        switch menuItem.type {
+            case .home:
+                resetToHomeViewController()
+                break
+                
+            case .planner:
+                addViewController(viewController: plannerViewController)
+                
+            case .process:
+                break
+                 
+            case .subjects:
+                break
+                
+            case .tests:
+                break
+                
+            case .achievments:
+                break
+                
+            case .payments:
+                break
+                
+            case .exams:
+                break
+        }
+    }
+    
+    
+    private func addViewController(viewController: UIViewController) {
+        homeViewController.addChild(viewController)
+        homeViewController.view.addSubview(viewController.view)
+        viewController.view.frame = view.frame
+        viewController.didMove(toParent: homeViewController)
+        
+        currentViewController = viewController
+        
+        didTapCloseMenuButton()
+    }
+    
+    
+    private func resetToHomeViewController() {
+        guard currentViewController != homeViewController else {
+            didTapCloseMenuButton()
+            
+            return
+        }
+        
+        currentViewController?.view.removeFromSuperview()
+        currentViewController?.didMove(toParent: nil)
+        
+        didTapCloseMenuButton()
     }
     
 }
