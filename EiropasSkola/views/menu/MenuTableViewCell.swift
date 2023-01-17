@@ -16,14 +16,14 @@ class NavigationTableViewCell: UITableViewCell {
     
     // MARK: - Private variables
     
-    private let itemIcon: UIImageView = {
+    private let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
     }()
-    private let itemLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.19
         
@@ -38,7 +38,7 @@ class NavigationTableViewCell: UITableViewCell {
         
         return label
     }()
-    private let secondaryNavIcon: UIImageView = {
+    private let secondaryNavIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "ChevronIcon.Right")
         imageView.contentMode = .scaleAspectFit
@@ -55,12 +55,7 @@ class NavigationTableViewCell: UITableViewCell {
         
         backgroundColor = UIColor.clear
         contentView.backgroundColor = UIColor.clear
-        
-        contentView.addSubview(itemIcon)
-        contentView.addSubview(itemLabel)
-        contentView.addSubview(secondaryNavIcon)
-        
-        addConstraints()
+        contentView.addSubviews(iconImageView, titleLabel, secondaryNavIconImageView)
     }
     
     
@@ -71,11 +66,16 @@ class NavigationTableViewCell: UITableViewCell {
     
     // MARK: - Overriden functions
     
+    override func layoutSubviews() {
+        addConstraints()
+    }
+    
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        itemIcon.image = nil
-        itemLabel.text = nil
+        iconImageView.image = nil
+        titleLabel.text = nil
     }
     
     
@@ -83,20 +83,20 @@ class NavigationTableViewCell: UITableViewCell {
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            itemIcon.widthAnchor.constraint(equalToConstant: 24),
-            itemIcon.heightAnchor.constraint(equalToConstant: 24),
-            itemIcon.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            itemIcon.centerYAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerYAnchor),
+            iconImageView.widthAnchor.constraint(equalToConstant: 24),
+            iconImageView.heightAnchor.constraint(equalToConstant: 24),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            iconImageView.centerYAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerYAnchor),
             
-            itemLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
-            itemLabel.leadingAnchor.constraint(equalTo: itemIcon.safeAreaLayoutGuide.trailingAnchor, constant: 20),
-            itemLabel.trailingAnchor.constraint(equalTo: secondaryNavIcon.safeAreaLayoutGuide.leadingAnchor, constant: -20),
-            itemLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor),
+            titleLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.safeAreaLayoutGuide.trailingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: secondaryNavIconImageView.safeAreaLayoutGuide.leadingAnchor, constant: -20),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor),
             
-            secondaryNavIcon.widthAnchor.constraint(equalToConstant: 24),
-            secondaryNavIcon.heightAnchor.constraint(equalToConstant: 24),
-            secondaryNavIcon.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            secondaryNavIcon.centerYAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerYAnchor),
+            secondaryNavIconImageView.widthAnchor.constraint(equalToConstant: 24),
+            secondaryNavIconImageView.heightAnchor.constraint(equalToConstant: 24),
+            secondaryNavIconImageView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            secondaryNavIconImageView.centerYAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerYAnchor),
         ])
     }
     
@@ -104,8 +104,8 @@ class NavigationTableViewCell: UITableViewCell {
     // MARK: - Public functions
     
     public func configure(with menuItem: MenuItem) {
-        itemIcon.image = menuItem.icon
-        itemLabel.text = menuItem.name
+        iconImageView.image = menuItem.icon
+        titleLabel.text = menuItem.name
     }
 
 }

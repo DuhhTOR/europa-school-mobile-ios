@@ -46,8 +46,7 @@ class MenuView: UIView {
         
         self.layer.insertSublayer(setGradientBackground(), at: 0)
         
-        addSubview(closeButton)
-        addSubview(tableView)
+        addSubviews(closeButton, tableView)
         
         closeButton.addTarget(self, action: #selector(didTapCloseMenuButton) , for: .touchUpInside)
     }
