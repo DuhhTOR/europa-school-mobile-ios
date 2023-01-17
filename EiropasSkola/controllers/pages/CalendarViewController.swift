@@ -9,13 +9,23 @@ import UIKit
 
 
 class CalendarViewController: UIViewController {
+    
+    // MARK: - Private variables
+    
+    public let calendarView: CalendarView = {
+        return CalendarView(frame: UIScreen.main.bounds)
+    }()
+    
 
     // MARK: - Lifecycle
     
+    override func loadView() {
+        self.view = calendarView
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .darkGray
     }
 
 }

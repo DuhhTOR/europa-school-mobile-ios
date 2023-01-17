@@ -18,6 +18,7 @@
 		8A8BFE442976BBD5001834D6 /* PaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BFE432976BBD5001834D6 /* PaymentsViewController.swift */; };
 		8A8BFE462976BBE2001834D6 /* ExamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BFE452976BBE2001834D6 /* ExamsViewController.swift */; };
 		8A8BFE4A2976CDE5001834D6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BFE492976CDE5001834D6 /* CalendarViewController.swift */; };
+		8A8BFE4D2976D0EA001834D6 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BFE4C2976D0EA001834D6 /* CalendarView.swift */; };
 		8A98DE7D2935139E00C9B91B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98DE7C2935139E00C9B91B /* AppDelegate.swift */; };
 		8A98DE7F2935139E00C9B91B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98DE7E2935139E00C9B91B /* SceneDelegate.swift */; };
 		8A98DE812935139E00C9B91B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98DE802935139E00C9B91B /* ContainerViewController.swift */; };
@@ -40,6 +41,7 @@
 		8A8BFE432976BBD5001834D6 /* PaymentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsViewController.swift; sourceTree = "<group>"; };
 		8A8BFE452976BBE2001834D6 /* ExamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsViewController.swift; sourceTree = "<group>"; };
 		8A8BFE492976CDE5001834D6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		8A8BFE4C2976D0EA001834D6 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		8A98DE792935139E00C9B91B /* EiropasSkola.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EiropasSkola.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A98DE7C2935139E00C9B91B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A98DE7E2935139E00C9B91B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 				8A8BFE3F2976BBB2001834D6 /* TestsViewController.swift */,
 			);
 			path = pages;
+			sourceTree = "<group>";
+		};
+		8A8BFE4B2976D0C4001834D6 /* calendar */ = {
+			isa = PBXGroup;
+			children = (
+				8A8BFE4C2976D0EA001834D6 /* CalendarView.swift */,
+			);
+			path = calendar;
 			sourceTree = "<group>";
 		};
 		8A98DE702935139E00C9B91B = {
@@ -165,6 +175,7 @@
 		8AD8447E2954E6360074EC73 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				8A8BFE4B2976D0C4001834D6 /* calendar */,
 				8AD3D77E295750EF000A4576 /* menu */,
 			);
 			path = views;
@@ -254,6 +265,7 @@
 				8A8BFE422976BBC5001834D6 /* AchievmentsViewController.swift in Sources */,
 				8A84FEEA295B773300A6A6D0 /* MenuState.swift in Sources */,
 				8A49AFEB2975C577008FAF3F /* PlannerViewController.swift in Sources */,
+				8A8BFE4D2976D0EA001834D6 /* CalendarView.swift in Sources */,
 				8A98DE7F2935139E00C9B91B /* SceneDelegate.swift in Sources */,
 				8A4237072948FB9400147DB7 /* MenuViewController.swift in Sources */,
 				8A8BFE3C2976BB91001834D6 /* ProcessViewController.swift in Sources */,
