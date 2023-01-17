@@ -11,6 +11,12 @@
 		8A4237092948FBAC00147DB7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4237082948FBAC00147DB7 /* HomeViewController.swift */; };
 		8A49AFEB2975C577008FAF3F /* PlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A49AFEA2975C577008FAF3F /* PlannerViewController.swift */; };
 		8A84FEEA295B773300A6A6D0 /* MenuState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A84FEE9295B773300A6A6D0 /* MenuState.swift */; };
+		8A8BFE3C2976BB91001834D6 /* ProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BFE3B2976BB91001834D6 /* ProcessViewController.swift */; };
+		8A8BFE3E2976BBA4001834D6 /* SubjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BFE3D2976BBA4001834D6 /* SubjectsViewController.swift */; };
+		8A8BFE402976BBB2001834D6 /* TestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BFE3F2976BBB2001834D6 /* TestsViewController.swift */; };
+		8A8BFE422976BBC5001834D6 /* AchievmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BFE412976BBC5001834D6 /* AchievmentsViewController.swift */; };
+		8A8BFE442976BBD5001834D6 /* PaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BFE432976BBD5001834D6 /* PaymentsViewController.swift */; };
+		8A8BFE462976BBE2001834D6 /* ExamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BFE452976BBE2001834D6 /* ExamsViewController.swift */; };
 		8A98DE7D2935139E00C9B91B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98DE7C2935139E00C9B91B /* AppDelegate.swift */; };
 		8A98DE7F2935139E00C9B91B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98DE7E2935139E00C9B91B /* SceneDelegate.swift */; };
 		8A98DE812935139E00C9B91B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98DE802935139E00C9B91B /* ContainerViewController.swift */; };
@@ -26,6 +32,12 @@
 		8A4237082948FBAC00147DB7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8A49AFEA2975C577008FAF3F /* PlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerViewController.swift; sourceTree = "<group>"; };
 		8A84FEE9295B773300A6A6D0 /* MenuState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuState.swift; sourceTree = "<group>"; };
+		8A8BFE3B2976BB91001834D6 /* ProcessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessViewController.swift; sourceTree = "<group>"; };
+		8A8BFE3D2976BBA4001834D6 /* SubjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsViewController.swift; sourceTree = "<group>"; };
+		8A8BFE3F2976BBB2001834D6 /* TestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsViewController.swift; sourceTree = "<group>"; };
+		8A8BFE412976BBC5001834D6 /* AchievmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievmentsViewController.swift; sourceTree = "<group>"; };
+		8A8BFE432976BBD5001834D6 /* PaymentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsViewController.swift; sourceTree = "<group>"; };
+		8A8BFE452976BBE2001834D6 /* ExamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamsViewController.swift; sourceTree = "<group>"; };
 		8A98DE792935139E00C9B91B /* EiropasSkola.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EiropasSkola.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A98DE7C2935139E00C9B91B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A98DE7E2935139E00C9B91B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,12 +64,34 @@
 		8A4237052948FAEE00147DB7 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8A8BFE472976CBC0001834D6 /* core */,
+				8A8BFE482976CBE5001834D6 /* pages */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		8A8BFE472976CBC0001834D6 /* core */ = {
+			isa = PBXGroup;
+			children = (
 				8A98DE802935139E00C9B91B /* ContainerViewController.swift */,
 				8A4237062948FB9400147DB7 /* MenuViewController.swift */,
 				8A4237082948FBAC00147DB7 /* HomeViewController.swift */,
-				8A49AFEA2975C577008FAF3F /* PlannerViewController.swift */,
 			);
-			path = controllers;
+			path = core;
+			sourceTree = "<group>";
+		};
+		8A8BFE482976CBE5001834D6 /* pages */ = {
+			isa = PBXGroup;
+			children = (
+				8A49AFEA2975C577008FAF3F /* PlannerViewController.swift */,
+				8A8BFE3B2976BB91001834D6 /* ProcessViewController.swift */,
+				8A8BFE3D2976BBA4001834D6 /* SubjectsViewController.swift */,
+				8A8BFE3F2976BBB2001834D6 /* TestsViewController.swift */,
+				8A8BFE412976BBC5001834D6 /* AchievmentsViewController.swift */,
+				8A8BFE432976BBD5001834D6 /* PaymentsViewController.swift */,
+				8A8BFE452976BBE2001834D6 /* ExamsViewController.swift */,
+			);
+			path = pages;
 			sourceTree = "<group>";
 		};
 		8A98DE702935139E00C9B91B = {
@@ -203,16 +237,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A8BFE442976BBD5001834D6 /* PaymentsViewController.swift in Sources */,
+				8A8BFE462976BBE2001834D6 /* ExamsViewController.swift in Sources */,
 				8A4237092948FBAC00147DB7 /* HomeViewController.swift in Sources */,
 				8AD3D77329571D88000A4576 /* MenuItem.swift in Sources */,
 				8A98DE812935139E00C9B91B /* ContainerViewController.swift in Sources */,
 				8A98DE7D2935139E00C9B91B /* AppDelegate.swift in Sources */,
 				8A996A332968B49100EC013F /* MenuView.swift in Sources */,
+				8A8BFE402976BBB2001834D6 /* TestsViewController.swift in Sources */,
+				8A8BFE3E2976BBA4001834D6 /* SubjectsViewController.swift in Sources */,
 				8AD844802954E6570074EC73 /* MenuTableViewCell.swift in Sources */,
+				8A8BFE422976BBC5001834D6 /* AchievmentsViewController.swift in Sources */,
 				8A84FEEA295B773300A6A6D0 /* MenuState.swift in Sources */,
 				8A49AFEB2975C577008FAF3F /* PlannerViewController.swift in Sources */,
 				8A98DE7F2935139E00C9B91B /* SceneDelegate.swift in Sources */,
 				8A4237072948FB9400147DB7 /* MenuViewController.swift in Sources */,
+				8A8BFE3C2976BB91001834D6 /* ProcessViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

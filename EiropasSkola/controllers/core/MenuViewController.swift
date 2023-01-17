@@ -9,7 +9,9 @@ import UIKit
 
 
 protocol MenuViewControllerDelegate: AnyObject {
+    
     func didSelect(menuItem: MenuItem)
+    
 }
 
 
@@ -24,7 +26,7 @@ class MenuViewController: UIViewController {
         .init(type: .process),
         .init(type: .subjects),
         .init(type: .tests),
-        .init(type: .achievments),
+        .init(type: .achievements),
         .init(type: .payments),
         .init(type: .exams),
        ]

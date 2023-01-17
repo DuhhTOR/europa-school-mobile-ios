@@ -17,6 +17,12 @@ class ContainerViewController: UIViewController {
     private let homeViewController = HomeViewController()
     private var navigationViewController: UINavigationController?
     private lazy var plannerViewController = PlannerViewController()
+    private lazy var processViewController = ProcessViewController()
+    private lazy var subjectsViewController = SubjectsViewController()
+    private lazy var testsViewController = TestsViewController()
+    private lazy var achievementsViewController = AchievementsViewController()
+    private lazy var paymentsViewController = PaymentsViewController()
+    private lazy var examsViewController = ExamsViewController()
     private var currentViewController: UIViewController?
 
     
@@ -34,8 +40,10 @@ class ContainerViewController: UIViewController {
         
         setNeedsStatusBarAppearanceUpdate()
     }
-
     
+    
+    // MARK: - Overridden properties
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
     }
@@ -154,6 +162,21 @@ extension ContainerViewController: HomeViewControllerDelegate, MenuViewDelegate 
         }
     }
     
+    
+    internal func didTapCalendarButton() {
+        return
+    }
+    
+    
+    internal func didTapBookmarkButton() {
+        return
+    }
+    
+    
+    internal func didTapUserProfileButton() {
+        return
+    }
+    
 }
 
 
@@ -162,30 +185,45 @@ extension ContainerViewController: MenuViewControllerDelegate {
     internal func didSelect(menuItem: MenuItem) {
         switch menuItem.type {
             case .home:
-                resetToHomeViewController()
+                resetHomeViewController()
+                didTapCloseMenuButton()
                 break
                 
             case .planner:
-                addViewController(viewController: plannerViewController)
+                changeViewController(viewController: plannerViewController)
+                break
                 
             case .process:
+                changeViewController(viewController: processViewController)
                 break
                  
             case .subjects:
+                changeViewController(viewController: subjectsViewController)
                 break
                 
             case .tests:
+                changeViewController(viewController: testsViewController)
                 break
                 
-            case .achievments:
+            case .achievements:
+                changeViewController(viewController: achievementsViewController)
                 break
                 
             case .payments:
+                changeViewController(viewController: paymentsViewController)
                 break
                 
             case .exams:
+                changeViewController(viewController: examsViewController)
                 break
         }
+    }
+    
+    
+    private func changeViewController(viewController: UIViewController) {
+        resetHomeViewController()
+        addViewController(viewController: viewController)
+        didTapCloseMenuButton()
     }
     
     
@@ -196,12 +234,10 @@ extension ContainerViewController: MenuViewControllerDelegate {
         viewController.didMove(toParent: homeViewController)
         
         currentViewController = viewController
-        
-        didTapCloseMenuButton()
     }
     
     
-    private func resetToHomeViewController() {
+    private func resetHomeViewController() {
         guard currentViewController != homeViewController else {
             didTapCloseMenuButton()
             
@@ -210,8 +246,6 @@ extension ContainerViewController: MenuViewControllerDelegate {
         
         currentViewController?.view.removeFromSuperview()
         currentViewController?.didMove(toParent: nil)
-        
-        didTapCloseMenuButton()
     }
     
 }

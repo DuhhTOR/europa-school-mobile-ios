@@ -18,7 +18,7 @@ public struct MenuItem {
         case process = "Process"
         case subjects = "Priekšmeti"
         case tests = "Pārbaudes darbi"
-        case achievments = "Sasniegumi"
+        case achievements = "Sasniegumi"
         case payments = "Maksājumi"
         case exams = "Eksāmeni"
         
@@ -39,7 +39,7 @@ public struct MenuItem {
                 case .tests:
                     return "FlagIcon"
                     
-                case .achievments:
+                case .achievements:
                     return "AwardIcon"
                     
                 case .payments:
@@ -55,7 +55,7 @@ public struct MenuItem {
     public let icon: UIImage?
     
     
-    // MARK: - Initialization
+    // MARK: - Initialisation
     
     init(type: Pages) {
         self.type = type

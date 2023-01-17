@@ -9,7 +9,9 @@ import UIKit
 
 
 protocol MenuViewDelegate: AnyObject {
+    
     func didTapCloseMenuButton()
+    
 }
 
 
@@ -37,7 +39,7 @@ class MenuView: UIView {
     public weak var delegate: MenuViewDelegate?
     
     
-    // MARK: - Initialization
+    // MARK: - Initialisation
     
     override init(frame: CGRect) {
         super.init(frame: frame)

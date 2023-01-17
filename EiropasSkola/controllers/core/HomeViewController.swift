@@ -9,7 +9,18 @@ import UIKit
 
 
 protocol HomeViewControllerDelegate: AnyObject {
+    
     func didTapOpenMenuButton()
+    
+    
+    func didTapCalendarButton()
+    
+    
+    func didTapBookmarkButton()
+    
+    
+    func didTapUserProfileButton()
+    
 }
 
 
@@ -78,4 +89,20 @@ class HomeViewController: UIViewController {
     @objc func didTapOpenMenuButton() {
         delegate?.didTapOpenMenuButton()
     }
+    
+    
+    @objc func didTapCalendarButton() {
+        delegate?.didTapCalendarButton()
+    }
+    
+    
+    @objc func didTapBookmarkButton() {
+        delegate?.didTapBookmarkButton()
+    }
+    
+    
+    @objc func didTapUserProfileButton() {
+        delegate?.didTapUserProfileButton()
+    }
+    
 }

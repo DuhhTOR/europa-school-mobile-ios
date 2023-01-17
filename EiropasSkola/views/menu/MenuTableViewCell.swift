@@ -48,7 +48,7 @@ class NavigationTableViewCell: UITableViewCell {
     }()
     
     
-    // MARK: - Initialization
+    // MARK: - Initialisation
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
