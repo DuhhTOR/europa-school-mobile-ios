@@ -12,7 +12,7 @@ class CalendarViewController: UIViewController {
     
     // MARK: - Private variables
     
-    public let calendarView: CalendarView = {
+    private let calendarView: CalendarView = {
         return CalendarView(frame: UIScreen.main.bounds)
     }()
     
@@ -21,11 +21,6 @@ class CalendarViewController: UIViewController {
     
     override func loadView() {
         self.view = calendarView
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
 
 }
