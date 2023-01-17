@@ -29,13 +29,29 @@ class CalendarHeaderView: UIView {
         return imageView
     }()
     private let currentTimeLabel: UILabel = {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.19
         let label = UILabel()
+        label.font = UIFont(name: "IBMPlexSans-Medium", size: 16)
+        label.textColor = UIColor(red: 0.984, green: 0.949, blue: 0.894, alpha: 1)
+        label.attributedText = NSMutableAttributedString(
+            string: label.text ?? "",
+            attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        )
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     private let currentDateLabel: UILabel = {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.19
         let label = UILabel()
+        label.font = UIFont(name: "IBMPlexSans-Medium", size: 16)
+        label.textColor = UIColor(red: 0.984, green: 0.949, blue: 0.894, alpha: 1)
+        label.attributedText = NSMutableAttributedString(
+            string: label.text ?? "",
+            attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        )
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -44,8 +60,8 @@ class CalendarHeaderView: UIView {
         case timeOnly = "HH:mm"
         case dateOnly = "dd. MMMM"
     }
-    private let dateFormatter: DateFormatter = DateFormatter()
-    private var timer: Timer = Timer()
+    private static let dateFormatter: DateFormatter = DateFormatter()
+    private static var timer: Timer?
     
     
     // MARK: - Initialisation
@@ -57,7 +73,7 @@ class CalendarHeaderView: UIView {
         
         currentTimeLabel.text = getCurrentTime()
         currentDateLabel.text = getCurrentDate()
-        timer = Timer.scheduledTimer(
+        Self.timer = Timer.scheduledTimer(
             timeInterval: 1.0,
             target: self,
             selector:#selector(self.tick),
@@ -83,14 +99,14 @@ class CalendarHeaderView: UIView {
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            clockIconImageView.widthAnchor.constraint(equalToConstant: 20),
-            clockIconImageView.heightAnchor.constraint(equalToConstant: 20),
+            clockIconImageView.widthAnchor.constraint(equalToConstant: 24),
+            clockIconImageView.heightAnchor.constraint(equalToConstant: 24),
             
             currentTimeLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             currentTimeLabel.leadingAnchor.constraint(equalTo: clockIconImageView.trailingAnchor, constant: 15),
 
-            calendarIconImageView.widthAnchor.constraint(equalToConstant: 20),
-            calendarIconImageView.heightAnchor.constraint(equalToConstant: 20),
+            calendarIconImageView.widthAnchor.constraint(equalToConstant: 24),
+            calendarIconImageView.heightAnchor.constraint(equalToConstant: 24),
             calendarIconImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             calendarIconImageView.leadingAnchor.constraint(equalTo: currentTimeLabel.trailingAnchor, constant: 27),
 
@@ -101,16 +117,16 @@ class CalendarHeaderView: UIView {
     
     
     private func getCurrentTime() -> String {
-        dateFormatter.dateFormat = customDateFormats.timeOnly.rawValue
+        Self.dateFormatter.dateFormat = customDateFormats.timeOnly.rawValue
         
-        return dateFormatter.string(from: Date())
+        return Self.dateFormatter.string(from: Date())
     }
     
     
     private func getCurrentDate() -> String {
-        dateFormatter.dateFormat = customDateFormats.dateOnly.rawValue
+        Self.dateFormatter.dateFormat = customDateFormats.dateOnly.rawValue
         
-        return dateFormatter.string(from: Date())
+        return Self.dateFormatter.string(from: Date())
     }
     
     

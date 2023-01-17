@@ -26,7 +26,6 @@ class NavigationTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.19
-        
         let label = UILabel()
         label.font = UIFont(name: "IBMPlexSans-Medium", size: 16)
         label.textColor = UIColor(red: 0.922, green: 0.929, blue: 0.937, alpha: 1)
