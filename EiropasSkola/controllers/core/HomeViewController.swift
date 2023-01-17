@@ -45,7 +45,7 @@ class HomeViewController: UIViewController {
             action: #selector(didTapOpenMenuButton)
         )
         let calendarButton: UIBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "CalendarIcon")?.withRenderingMode(.alwaysOriginal),
+            image: UIImage(named: "CalendarIcon.Darker")?.withRenderingMode(.alwaysOriginal),
             style: .done,
             target: self,
             action: nil

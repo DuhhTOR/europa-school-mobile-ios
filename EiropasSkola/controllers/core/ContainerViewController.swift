@@ -16,6 +16,7 @@ class ContainerViewController: UIViewController {
     private let menuViewController = MenuViewController()
     private let homeViewController = HomeViewController()
     private var navigationViewController: UINavigationController?
+    private lazy var calendarViewController = CalendarViewController()
     private lazy var plannerViewController = PlannerViewController()
     private lazy var processViewController = ProcessViewController()
     private lazy var subjectsViewController = SubjectsViewController()
@@ -187,6 +188,10 @@ extension ContainerViewController: MenuViewControllerDelegate {
             case .home:
                 resetHomeViewController()
                 didTapCloseMenuButton()
+                break
+                
+            case .calendar:
+                changeViewController(viewController: calendarViewController)
                 break
                 
             case .planner:

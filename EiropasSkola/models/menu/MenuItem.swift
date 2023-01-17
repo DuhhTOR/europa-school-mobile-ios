@@ -14,6 +14,7 @@ public struct MenuItem {
     
     public enum Pages: String {
         case home = "Sākums"
+        case calendar = "Kalendārs"
         case planner = "Plānotājs"
         case process = "Process"
         case subjects = "Priekšmeti"
@@ -26,6 +27,9 @@ public struct MenuItem {
             switch self {
                 case .home:
                     return "house.fill"
+                    
+                case .calendar:
+                    return "CalendarIcon"
                     
                 case .planner:
                     return "StarIcon"
