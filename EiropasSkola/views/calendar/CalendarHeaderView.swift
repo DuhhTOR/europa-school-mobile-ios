@@ -104,6 +104,7 @@ class CalendarHeaderView: UIView {
             
             currentTimeLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             currentTimeLabel.leadingAnchor.constraint(equalTo: clockIconImageView.trailingAnchor, constant: 15),
+            currentTimeLabel.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor),
 
             calendarIconImageView.widthAnchor.constraint(equalToConstant: 24),
             calendarIconImageView.heightAnchor.constraint(equalToConstant: 24),
@@ -112,6 +113,7 @@ class CalendarHeaderView: UIView {
 
             currentDateLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             currentDateLabel.leadingAnchor.constraint(equalTo: calendarIconImageView.trailingAnchor, constant: 15),
+            currentDateLabel.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor),
         ])
     }
     

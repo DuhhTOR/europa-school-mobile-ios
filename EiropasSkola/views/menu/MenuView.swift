@@ -44,7 +44,7 @@ class MenuView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.layer.insertSublayer(setGradientBackground(), at: 0)
+        self.layer.insertSublayer(CustomGradientLayer.pageGradientLayer(bounds: self.bounds), at: 0)
         
         addSubviews(closeButton, tableView)
         
@@ -81,21 +81,6 @@ class MenuView: UIView {
             tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
-    }
-    
-    
-    private func setGradientBackground() -> CAGradientLayer {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [
-            UIColor(red: 0.047, green: 0.137, blue: 0.251, alpha: 1).cgColor,
-            UIColor(red: 0.204, green: 0.286, blue: 0.369, alpha: 1).cgColor
-        ]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
-        gradientLayer.locations = [0, 1]
-        gradientLayer.frame = self.bounds
-
-       return gradientLayer
     }
     
     

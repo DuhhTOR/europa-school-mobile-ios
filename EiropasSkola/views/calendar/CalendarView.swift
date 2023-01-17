@@ -25,6 +25,8 @@ class CalendarView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.layer.insertSublayer(CustomGradientLayer.pageGradientLayer(bounds: self.bounds), at: 0)
+        
         addSubview(calendarHeaderView)
     }
     
@@ -45,7 +47,7 @@ class CalendarView: UIView {
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            calendarHeaderView.heightAnchor.constraint(equalToConstant: 20),
+            calendarHeaderView.heightAnchor.constraint(equalToConstant: 24),
             calendarHeaderView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 18),
             calendarHeaderView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 18),
             calendarHeaderView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -18),
