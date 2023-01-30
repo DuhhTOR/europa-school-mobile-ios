@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A20CD21298847F100600906 /* JTAppleCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 8A20CD20298847F100600906 /* JTAppleCalendar */; };
 		8A4237072948FB9400147DB7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4237062948FB9400147DB7 /* MenuViewController.swift */; };
 		8A4237092948FBAC00147DB7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4237082948FBAC00147DB7 /* HomeViewController.swift */; };
 		8A49AFEB2975C577008FAF3F /* PlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A49AFEA2975C577008FAF3F /* PlannerViewController.swift */; };
@@ -65,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A20CD21298847F100600906 /* JTAppleCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +216,9 @@
 			dependencies = (
 			);
 			name = EiropasSkola;
+			packageProductDependencies = (
+				8A20CD20298847F100600906 /* JTAppleCalendar */,
+			);
 			productName = EiropasSkola;
 			productReference = 8A98DE792935139E00C9B91B /* EiropasSkola.app */;
 			productType = "com.apple.product-type.application";
@@ -242,6 +247,9 @@
 				Base,
 			);
 			mainGroup = 8A98DE702935139E00C9B91B;
+			packageReferences = (
+				8A20CD1F298847F100600906 /* XCRemoteSwiftPackageReference "JTAppleCalendar" */,
+			);
 			productRefGroup = 8A98DE7A2935139E00C9B91B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -500,6 +508,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8A20CD1F298847F100600906 /* XCRemoteSwiftPackageReference "JTAppleCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/patchthecode/JTAppleCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8A20CD20298847F100600906 /* JTAppleCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A20CD1F298847F100600906 /* XCRemoteSwiftPackageReference "JTAppleCalendar" */;
+			productName = JTAppleCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8A98DE712935139E00C9B91B /* Project object */;
 }
