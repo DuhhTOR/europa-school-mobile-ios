@@ -28,6 +28,10 @@ class CalendarView: UIView {
         calendarCollectionView.minimumInteritemSpacing = 0
         calendarCollectionView.translatesAutoresizingMaskIntoConstraints = false
         calendarCollectionView.register(CalendarCellView.self, forCellWithReuseIdentifier: CalendarCellView.identifier)
+        calendarCollectionView.scrollDirection = .horizontal
+        calendarCollectionView.isPagingEnabled = true
+        calendarCollectionView.backgroundColor = UIColor.clear
+        calendarCollectionView.showsHorizontalScrollIndicator = false
         
         return calendarCollectionView
     }()
@@ -65,10 +69,10 @@ class CalendarView: UIView {
             calendarHeaderView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 18),
             calendarHeaderView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -18),
             
+            calendarCollectionView.heightAnchor.constraint(equalToConstant: 300),
             calendarCollectionView.topAnchor.constraint(equalTo: calendarHeaderView.safeAreaLayoutGuide.bottomAnchor),
             calendarCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             calendarCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            calendarCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
     }
     

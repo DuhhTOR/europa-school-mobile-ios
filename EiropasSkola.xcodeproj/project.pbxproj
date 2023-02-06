@@ -13,6 +13,7 @@
 		8A4237092948FBAC00147DB7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4237082948FBAC00147DB7 /* HomeViewController.swift */; };
 		8A49AFEB2975C577008FAF3F /* PlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A49AFEA2975C577008FAF3F /* PlannerViewController.swift */; };
 		8A84FEEA295B773300A6A6D0 /* MenuState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A84FEE9295B773300A6A6D0 /* MenuState.swift */; };
+		8A8AC5C9299187FC006F9E1A /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8AC5C8299187FC006F9E1A /* UIColorExtension.swift */; };
 		8A8BFE3C2976BB91001834D6 /* ProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BFE3B2976BB91001834D6 /* ProcessViewController.swift */; };
 		8A8BFE3E2976BBA4001834D6 /* SubjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BFE3D2976BBA4001834D6 /* SubjectsViewController.swift */; };
 		8A8BFE402976BBB2001834D6 /* TestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BFE3F2976BBB2001834D6 /* TestsViewController.swift */; };
@@ -40,6 +41,7 @@
 		8A4237082948FBAC00147DB7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8A49AFEA2975C577008FAF3F /* PlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerViewController.swift; sourceTree = "<group>"; };
 		8A84FEE9295B773300A6A6D0 /* MenuState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuState.swift; sourceTree = "<group>"; };
+		8A8AC5C8299187FC006F9E1A /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		8A8BFE3B2976BB91001834D6 /* ProcessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessViewController.swift; sourceTree = "<group>"; };
 		8A8BFE3D2976BBA4001834D6 /* SubjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsViewController.swift; sourceTree = "<group>"; };
 		8A8BFE3F2976BBB2001834D6 /* TestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,13 @@
 				8A8BFE482976CBE5001834D6 /* pages */,
 			);
 			path = controllers;
+			sourceTree = "<group>";
+		};
+		8A8AC5C5299185E8006F9E1A /* calendar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = calendar;
 			sourceTree = "<group>";
 		};
 		8A8BFE472976CBC0001834D6 /* core */ = {
@@ -159,6 +168,7 @@
 		8AD3D77129571D6D000A4576 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				8A8AC5C5299185E8006F9E1A /* calendar */,
 				8AD3D7742957267B000A4576 /* menu */,
 			);
 			path = models;
@@ -181,6 +191,7 @@
 				8A98DE7E2935139E00C9B91B /* SceneDelegate.swift */,
 				8A98DE85293513A100C9B91B /* Assets.xcassets */,
 				8A8BFE502976DB8B001834D6 /* UIViewExtension.swift */,
+				8A8AC5C8299187FC006F9E1A /* UIColorExtension.swift */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -283,6 +294,7 @@
 				8A8BFE462976BBE2001834D6 /* ExamsViewController.swift in Sources */,
 				8A8BFE4A2976CDE5001834D6 /* CalendarViewController.swift in Sources */,
 				8A4237092948FBAC00147DB7 /* HomeViewController.swift in Sources */,
+				8A8AC5C9299187FC006F9E1A /* UIColorExtension.swift in Sources */,
 				8AD3D77329571D88000A4576 /* MenuItem.swift in Sources */,
 				8A8BFE5429770738001834D6 /* CustomGradientLayer.swift in Sources */,
 				8A3F6804298C464500E13EFC /* CalendarCellView.swift in Sources */,

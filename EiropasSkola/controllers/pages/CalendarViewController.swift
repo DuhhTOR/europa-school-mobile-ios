@@ -36,15 +36,6 @@ class CalendarViewController: UIViewController {
 
  
 extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource {
-    func calendar(
-        _ calendar: JTAppleCalendar.JTACMonthView,
-        willDisplay cell: JTAppleCalendar.JTACDayCell,
-        forItemAt date: Date,
-        cellState: JTAppleCalendar.CellState,
-        indexPath: IndexPath
-    ) {
-        
-    }
     
     func calendar(
         _ calendar: JTAppleCalendar.JTACMonthView,
@@ -52,21 +43,66 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
         cellState: JTAppleCalendar.CellState,
         indexPath: IndexPath
     ) -> JTAppleCalendar.JTACDayCell {
-        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: CalendarCellView.identifier, for: indexPath) as! CalendarCellView
-        cell.dayLabel.text = cellState.text
+        let cell = calendar.dequeueReusableJTAppleCell(
+            withReuseIdentifier: CalendarCellView.identifier,
+            for: indexPath
+        ) as! CalendarCellView
+        
+        self.calendar(
+            calendar, willDisplay: cell,
+            forItemAt: date,
+            cellState: cellState,
+            indexPath: indexPath
+        )
         
         return cell
     }
     
+    
+    func calendar(
+        _ calendar: JTAppleCalendar.JTACMonthView,
+        willDisplay cell: JTAppleCalendar.JTACDayCell,
+        forItemAt date: Date,
+        cellState: JTAppleCalendar.CellState,
+        indexPath: IndexPath
+    ) {
+        configureCell(view: cell, cellState: cellState)
+    }
+    
+    
     func configureCalendar(_ calendar: JTAppleCalendar.JTACMonthView) -> JTAppleCalendar.ConfigurationParameters {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy MM dd"
-        let startDate = formatter.date(from: "2018 01 01")!
-        let endDate = Date()
+        let startDate = formatter.date(from: "2023 02 01")!
+        let endDate = Calendar.current.date(byAdding: .month, value: 11, to: startDate)!
         
-        return ConfigurationParameters(startDate: startDate, endDate: endDate, numberOfRows: 5, firstDayOfWeek: .monday)
+        return ConfigurationParameters(
+            startDate: startDate,
+            endDate: endDate,
+            numberOfRows: 5,
+            generateOutDates: .tillEndOfRow,
+            firstDayOfWeek: .monday,
+            hasStrictBoundaries: true
+        )
     }
     
+    
+    func configureCell(view: JTACDayCell?, cellState: CellState) {
+        guard let cell = view as? CalendarCellView else {
+            return
+        }
+        
+        cell.configureDayLabel(with: cellState.text)
+        
+        handleCellTextColor(cell: cell, cellState: cellState)
+    }
+    
+    
+    func handleCellTextColor(cell: CalendarCellView, cellState: CellState) {
+        if cellState.dateBelongsTo != .thisMonth {
+            cell.configureDayLabel(with: UIColor.calendarDayLabelColors.outDate)
+        }
+    }
     
 }
 
