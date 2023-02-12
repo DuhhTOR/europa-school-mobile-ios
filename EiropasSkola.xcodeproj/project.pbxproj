@@ -30,6 +30,7 @@
 		8A98DE812935139E00C9B91B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98DE802935139E00C9B91B /* ContainerViewController.swift */; };
 		8A98DE86293513A100C9B91B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A98DE85293513A100C9B91B /* Assets.xcassets */; };
 		8A996A332968B49100EC013F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A996A322968B49100EC013F /* MenuView.swift */; };
+		8ABCAFA82994334100BBD483 /* CalendarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABCAFA72994334100BBD483 /* CalendarExtension.swift */; };
 		8AD3D77329571D88000A4576 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD3D77229571D88000A4576 /* MenuItem.swift */; };
 		8AD3D77D29574B81000A4576 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AD3D77A29574B81000A4576 /* LaunchScreen.storyboard */; };
 		8AD844802954E6570074EC73 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD8447F2954E6570074EC73 /* MenuTableViewCell.swift */; };
@@ -60,6 +61,7 @@
 		8A98DE85293513A100C9B91B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A98DE8A293513A100C9B91B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A996A322968B49100EC013F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		8ABCAFA72994334100BBD483 /* CalendarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarExtension.swift; sourceTree = "<group>"; };
 		8AD3D77229571D88000A4576 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		8AD3D77B29574B81000A4576 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AD8447F2954E6570074EC73 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				8A98DE85293513A100C9B91B /* Assets.xcassets */,
 				8A8BFE502976DB8B001834D6 /* UIViewExtension.swift */,
 				8A8AC5C8299187FC006F9E1A /* UIColorExtension.swift */,
+				8ABCAFA72994334100BBD483 /* CalendarExtension.swift */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				8A8BFE4F2976D496001834D6 /* CalendarHeaderView.swift in Sources */,
 				8AD844802954E6570074EC73 /* MenuTableViewCell.swift in Sources */,
 				8A8BFE422976BBC5001834D6 /* AchievmentsViewController.swift in Sources */,
+				8ABCAFA82994334100BBD483 /* CalendarExtension.swift in Sources */,
 				8A84FEEA295B773300A6A6D0 /* MenuState.swift in Sources */,
 				8A49AFEB2975C577008FAF3F /* PlannerViewController.swift in Sources */,
 				8A8BFE4D2976D0EA001834D6 /* CalendarView.swift in Sources */,
