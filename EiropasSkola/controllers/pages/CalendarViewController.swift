@@ -78,9 +78,7 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
     
     
     func configureCalendar(_ calendar: JTAppleCalendar.JTACMonthView) -> JTAppleCalendar.ConfigurationParameters {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy MM dd"
-        let startDate = formatter.date(from: "2023 02 01")!
+        let startDate = Self.dateFormatter.date(from: "2023 01 01")!
         let endDate = Calendar.current.date(byAdding: .month, value: 11, to: startDate)!
         
         return ConfigurationParameters(
@@ -98,16 +96,39 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
             return
         }
         
-        cell.configureDayLabel(with: cellState.text)
-        
+        cell.configureDayLabel(text: cellState.text)
         handleCellTextColor(cell: cell, cellState: cellState)
     }
     
     
     func handleCellTextColor(cell: CalendarCellView, cellState: CellState) {
-        if cellState.dateBelongsTo != .thisMonth {
-            cell.configureDayLabel(with: UIColor.calendarDayLabelColors.outDate)
+        if isDateHoliday(date: Self.dateFormatter.string(from: cellState.date)) {
+            cell.configureDayLabel(textColor: UIColor.calendarColors.label.holiday)
+            cell.configureDayLabel(backgroundColor: UIColor.clear)
+        } else if cellState.dateBelongsTo != .thisMonth {
+            cell.configureDayLabel(textColor: UIColor.calendarColors.label.outDate)
+            cell.configureDayLabel(backgroundColor: UIColor.clear)
+        } else if Calendar.current.isDate(cellState.date, equalTo: Date(), toGranularity: .day) {
+            cell.configureDayLabel(textColor: UIColor.calendarColors.label.today)
+            cell.configureDayLabel(backgroundColor: UIColor.calendarColors.cell.today)
+        } else if cellState.day == .saturday || cellState.day == .sunday {
+            cell.configureDayLabel(textColor: UIColor.calendarColors.label.weekend)
+            cell.configureDayLabel(backgroundColor: UIColor.clear)
+        } else {
+            cell.configureDayLabel(textColor: UIColor.calendarColors.label.normal)
+            cell.configureDayLabel(backgroundColor: UIColor.clear)
         }
+    }
+    
+    
+    func isDateHoliday(date: String) -> Bool {
+        for holiday in Calendar.latvianHolidays.allCases {
+            if date.contains(holiday.rawValue) {
+                return true
+            }
+        }
+        
+        return false
     }
     
 }
