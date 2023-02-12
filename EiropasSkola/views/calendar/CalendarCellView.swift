@@ -16,9 +16,10 @@ class CalendarCellView: JTACDayCell {
     public static let identifier = "CalendarCellView"
     private let dayLabel: UILabel = {
         let dayLabel = UILabel()
-        dayLabel.textColor = UIColor.calendarDayLabelColors.normal
         dayLabel.font = UIFont(name: "IBMPlexSans-Medium", size: 14)
         dayLabel.textAlignment = .center
+        dayLabel.layer.masksToBounds = true
+        dayLabel.layer.cornerRadius = 2
         dayLabel.translatesAutoresizingMaskIntoConstraints = false
                 
         return dayLabel
@@ -50,6 +51,8 @@ class CalendarCellView: JTACDayCell {
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
+            dayLabel.widthAnchor.constraint(equalToConstant: 28),
+            dayLabel.heightAnchor.constraint(equalToConstant: 28),
             dayLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
             dayLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
         ])
@@ -58,13 +61,18 @@ class CalendarCellView: JTACDayCell {
     
     // MARK: - Public functions
     
-    public func configureDayLabel(with text: String) {
+    public func configureDayLabel(text: String) {
         dayLabel.text = text
     }
     
     
-    public func configureDayLabel(with textColor: UIColor?) {
+    public func configureDayLabel(textColor: UIColor) {
         dayLabel.textColor = textColor
+    }
+    
+    
+    public func configureDayLabel(backgroundColor: UIColor) {
+        dayLabel.backgroundColor = backgroundColor
     }
     
 }
