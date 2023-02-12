@@ -78,7 +78,7 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
     
     
     func configureCalendar(_ calendar: JTAppleCalendar.JTACMonthView) -> JTAppleCalendar.ConfigurationParameters {
-        let startDate = Self.dateFormatter.date(from: "2023 01 01")!
+        let startDate = Date().startOfMonth()
         let endDate = Calendar.current.date(byAdding: .month, value: 11, to: startDate)!
         
         return ConfigurationParameters(
@@ -97,11 +97,11 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
         }
         
         cell.configureDayLabel(text: cellState.text)
-        handleCellTextColor(cell: cell, cellState: cellState)
+        handleCellStyling(cell: cell, cellState: cellState)
     }
     
     
-    func handleCellTextColor(cell: CalendarCellView, cellState: CellState) {
+    func handleCellStyling(cell: CalendarCellView, cellState: CellState) {
         if isDateHoliday(date: Self.dateFormatter.string(from: cellState.date)) {
             cell.configureDayLabel(textColor: UIColor.calendarColors.label.holiday)
             cell.configureDayLabel(backgroundColor: UIColor.clear)
