@@ -13,6 +13,13 @@ class CalendarViewController: UIViewController {
     
     // MARK: - Private variables
     
+    private static let dateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy MM dd"
+        
+        return dateFormatter
+    }()
+    
     private let calendarView: CalendarView = {
         return CalendarView(frame: UIScreen.main.bounds)
     }()
@@ -79,7 +86,6 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
         return ConfigurationParameters(
             startDate: startDate,
             endDate: endDate,
-            numberOfRows: 5,
             generateOutDates: .tillEndOfRow,
             firstDayOfWeek: .monday,
             hasStrictBoundaries: true
