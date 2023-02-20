@@ -25,6 +25,7 @@ class CalendarCollectionViewHeader: UIView {
     private let previousMonthButton: UIButton = {
         let previousMonthButton = UIButton()
         previousMonthButton.setImage(UIImage(named: "ChevronIcon.Left.Light"), for: .normal)
+        previousMonthButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         previousMonthButton.translatesAutoresizingMaskIntoConstraints = false
         
         return previousMonthButton
@@ -32,6 +33,7 @@ class CalendarCollectionViewHeader: UIView {
     private let nextMonthButton: UIButton = {
         let nextMonthButton = UIButton()
         nextMonthButton.setImage(UIImage(named: "ChevronIcon.Right.Light"), for: .normal)
+        nextMonthButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         nextMonthButton.translatesAutoresizingMaskIntoConstraints = false
         
         return nextMonthButton
