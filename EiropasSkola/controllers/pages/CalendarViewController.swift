@@ -18,7 +18,6 @@ class CalendarViewController: UIViewController {
         
         return dateFormatter
     }()
-    
     private let calendarView: CalendarView = {
         return CalendarView(frame: UIScreen.main.bounds)
     }()
@@ -37,6 +36,7 @@ class CalendarViewController: UIViewController {
         calendarView.calendarCollectionView.calendarDelegate = self
         calendarView.calendarCollectionView.calendarDataSource = self
         calendarView.calendarCollectionView.scrollToDate(Date())
+        calendarView.calendarCollectionViewHeader.delegate = self
     }
 
 }
@@ -155,3 +155,16 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
     
 }
 
+
+extension CalendarViewController: CalendarCollectionViewHeaderDelegate {
+    
+    func didTapPreviousMonthButton() {
+        calendarView.calendarCollectionView.scrollToSegment(.previous)
+    }
+
+    
+    func didTapNextMonthButton() {
+        calendarView.calendarCollectionView.scrollToSegment(.next)
+    }
+    
+}

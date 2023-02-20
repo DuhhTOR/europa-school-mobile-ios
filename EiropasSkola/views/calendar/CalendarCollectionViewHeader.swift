@@ -8,6 +8,16 @@
 import UIKit
 
 
+protocol CalendarCollectionViewHeaderDelegate: AnyObject {
+    
+    func didTapPreviousMonthButton()
+
+    
+    func didTapNextMonthButton()
+    
+}
+
+
 class CalendarCollectionViewHeader: UIView {
 
     // MARK: - Private variables
@@ -38,6 +48,9 @@ class CalendarCollectionViewHeader: UIView {
         return currentSelectedMonthLabel
     }()
     
+    // MARK: - Public variables
+    public weak var delegate: CalendarCollectionViewHeaderDelegate?
+    
     
     // MARK: - Initialisation
     
@@ -45,6 +58,9 @@ class CalendarCollectionViewHeader: UIView {
         super.init(frame: frame)
                 
         addSubviews(previousMonthButton, currentSelectedMonthLabel, nextMonthButton)
+        
+        previousMonthButton.addTarget(self, action: #selector(didTapPreviousMonthButton), for: .touchUpInside)
+        nextMonthButton.addTarget(self, action: #selector(didTapNextMonthButton), for: .touchUpInside)
     }
     
     
@@ -82,6 +98,18 @@ class CalendarCollectionViewHeader: UIView {
     
     public func configureCurrentSelectedMonthLabel(with date: String) {
         currentSelectedMonthLabel.text = date.capitalized
+    }
+    
+    
+    // MARK: - Objective C functions
+    
+    @objc func didTapPreviousMonthButton() {
+        delegate?.didTapPreviousMonthButton()
+    }
+    
+    
+    @objc func didTapNextMonthButton() {
+        delegate?.didTapNextMonthButton()
     }
 
 }
