@@ -30,6 +30,7 @@ class CalendarCollectionViewHeader: UIView {
         let paragraphStyle = NSMutableParagraphStyle()
         let currentSelectedMonthLabel = UILabel()
         currentSelectedMonthLabel.baselineAdjustment = .alignCenters
+        currentSelectedMonthLabel.textAlignment = .center
         currentSelectedMonthLabel.textColor = UIColor(red: 0.992, green: 0.992, blue: 0.992, alpha: 1)
         currentSelectedMonthLabel.font = UIFont(name: "IBMPlexSans-Medium", size: 24)
         currentSelectedMonthLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -64,14 +65,15 @@ class CalendarCollectionViewHeader: UIView {
     private func addConstraints() {
         NSLayoutConstraint.activate([
             previousMonthButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-            previousMonthButton.trailingAnchor.constraint(equalTo: currentSelectedMonthLabel.safeAreaLayoutGuide.leadingAnchor, constant: -30),
+            previousMonthButton.trailingAnchor.constraint(equalTo: currentSelectedMonthLabel.safeAreaLayoutGuide.leadingAnchor, constant: -15),
             
+            currentSelectedMonthLabel.widthAnchor.constraint(equalToConstant: 150),
             currentSelectedMonthLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             currentSelectedMonthLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             currentSelectedMonthLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             
             nextMonthButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-            nextMonthButton.leadingAnchor.constraint(equalTo: currentSelectedMonthLabel.safeAreaLayoutGuide.trailingAnchor, constant: 30),
+            nextMonthButton.leadingAnchor.constraint(equalTo: currentSelectedMonthLabel.safeAreaLayoutGuide.trailingAnchor, constant: 15),
         ])
     }
     
