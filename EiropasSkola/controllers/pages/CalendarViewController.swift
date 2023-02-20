@@ -15,7 +15,6 @@ class CalendarViewController: UIViewController {
     
     private static let dateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy MM dd"
         
         return dateFormatter
     }()
@@ -37,6 +36,7 @@ class CalendarViewController: UIViewController {
         
         calendarView.calendarCollectionView.calendarDelegate = self
         calendarView.calendarCollectionView.calendarDataSource = self
+        calendarView.calendarCollectionView.scrollToDate(Date())
     }
 
 }
@@ -77,9 +77,11 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
     }
     
     
-    func configureCalendar(_ calendar: JTAppleCalendar.JTACMonthView) -> JTAppleCalendar.ConfigurationParameters {
-        let startDate = Date().startOfMonth()
-        let endDate = Calendar.current.date(byAdding: .month, value: 11, to: startDate)!
+    func configureCalendar(
+        _ calendar: JTAppleCalendar.JTACMonthView
+    ) -> JTAppleCalendar.ConfigurationParameters {
+        let startDate = Calendar.current.date(byAdding: .month, value: -3, to: Date())!
+        let endDate = Calendar.current.date(byAdding: .month, value: 9, to: Date())!
         
         return ConfigurationParameters(
             startDate: startDate,
@@ -91,7 +93,24 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
     }
     
     
-    func configureCell(view: JTACDayCell?, cellState: CellState) {
+    func calendar(_ calendar: JTACMonthView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        let helper = NSCalendar.init(calendarIdentifier: NSCalendar.Identifier.gregorian)
+        let this_date = calendar.visibleDates().monthDates.first(where: {
+            (helper?.component(NSCalendar.Unit.day, from: $0.date))! == 1
+        })?.date as Any
+        let localDate = Date(
+            timeInterval: TimeInterval(Calendar.current.timeZone.secondsFromGMT()),
+            since: this_date as! Date
+        )
+        Self.dateFormatter.dateFormat = "LLLL yyyy"
+        
+        calendarView.calendarCollectionViewHeader.configureCurrentSelectedMonthLabel(
+            with: Self.dateFormatter.string(from: localDate)
+        )
+    }
+    
+    
+    private func configureCell(view: JTACDayCell?, cellState: CellState) {
         guard let cell = view as? CalendarCellView else {
             return
         }
@@ -101,7 +120,9 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
     }
     
     
-    func handleCellStyling(cell: CalendarCellView, cellState: CellState) {
+    private func handleCellStyling(cell: CalendarCellView, cellState: CellState) {
+        Self.dateFormatter.dateFormat = "yyyy MM dd"
+        
         if isDateHoliday(date: Self.dateFormatter.string(from: cellState.date)) {
             cell.configureDayLabel(textColor: UIColor.calendarColors.label.holiday)
             cell.configureDayLabel(backgroundColor: UIColor.clear)
@@ -121,7 +142,8 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
     }
     
     
-    func isDateHoliday(date: String) -> Bool {
+    
+    private func isDateHoliday(date: String) -> Bool {
         for holiday in Calendar.latvianHolidays.allCases {
             if date.contains(holiday.rawValue) {
                 return true

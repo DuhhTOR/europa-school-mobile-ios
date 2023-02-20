@@ -13,6 +13,7 @@
 		8A4237072948FB9400147DB7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4237062948FB9400147DB7 /* MenuViewController.swift */; };
 		8A4237092948FBAC00147DB7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4237082948FBAC00147DB7 /* HomeViewController.swift */; };
 		8A49AFEB2975C577008FAF3F /* PlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A49AFEA2975C577008FAF3F /* PlannerViewController.swift */; };
+		8A5719A4299EA88500F9D00B /* CalendarCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5719A3299EA88500F9D00B /* CalendarCollectionViewHeader.swift */; };
 		8A84FEEA295B773300A6A6D0 /* MenuState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A84FEE9295B773300A6A6D0 /* MenuState.swift */; };
 		8A8AC5C9299187FC006F9E1A /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8AC5C8299187FC006F9E1A /* UIColorExtension.swift */; };
 		8A8BFE3C2976BB91001834D6 /* ProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BFE3B2976BB91001834D6 /* ProcessViewController.swift */; };
@@ -43,6 +44,7 @@
 		8A4237062948FB9400147DB7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		8A4237082948FBAC00147DB7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8A49AFEA2975C577008FAF3F /* PlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerViewController.swift; sourceTree = "<group>"; };
+		8A5719A3299EA88500F9D00B /* CalendarCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewHeader.swift; sourceTree = "<group>"; };
 		8A84FEE9295B773300A6A6D0 /* MenuState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuState.swift; sourceTree = "<group>"; };
 		8A8AC5C8299187FC006F9E1A /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		8A8BFE3B2976BB91001834D6 /* ProcessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				8A8BFE4C2976D0EA001834D6 /* CalendarView.swift */,
 				8A8BFE4E2976D496001834D6 /* CalendarHeaderView.swift */,
 				8A3F6803298C464500E13EFC /* CalendarCellView.swift */,
+				8A5719A3299EA88500F9D00B /* CalendarCollectionViewHeader.swift */,
 			);
 			path = calendar;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				8ABCAFA82994334100BBD483 /* CalendarExtension.swift in Sources */,
 				8A84FEEA295B773300A6A6D0 /* MenuState.swift in Sources */,
 				8A49AFEB2975C577008FAF3F /* PlannerViewController.swift in Sources */,
+				8A5719A4299EA88500F9D00B /* CalendarCollectionViewHeader.swift in Sources */,
 				8A8BFE4D2976D0EA001834D6 /* CalendarView.swift in Sources */,
 				8A98DE7F2935139E00C9B91B /* SceneDelegate.swift in Sources */,
 				8A4237072948FB9400147DB7 /* MenuViewController.swift in Sources */,

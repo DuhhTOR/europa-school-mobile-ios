@@ -19,6 +19,12 @@ class CalendarView: UIView {
         
         return calendarHeaderView
     }()
+    public let calendarCollectionViewHeader: CalendarCollectionViewHeader = {
+        let calendarCollectionViewHeader = CalendarCollectionViewHeader()
+        calendarCollectionViewHeader.translatesAutoresizingMaskIntoConstraints = false
+        
+        return calendarCollectionViewHeader
+    }()
     
     // MARK: - Public variables
     
@@ -26,12 +32,12 @@ class CalendarView: UIView {
         let calendarCollectionView = JTACMonthView()
         calendarCollectionView.minimumLineSpacing = 0
         calendarCollectionView.minimumInteritemSpacing = 0
-        calendarCollectionView.translatesAutoresizingMaskIntoConstraints = false
         calendarCollectionView.register(CalendarCellView.self, forCellWithReuseIdentifier: CalendarCellView.identifier)
         calendarCollectionView.scrollDirection = .horizontal
         calendarCollectionView.isPagingEnabled = true
         calendarCollectionView.backgroundColor = UIColor.clear
         calendarCollectionView.showsHorizontalScrollIndicator = false
+        calendarCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return calendarCollectionView
     }()
@@ -44,7 +50,7 @@ class CalendarView: UIView {
         
         self.layer.insertSublayer(CustomGradientLayer.pageGradientLayer(bounds: self.bounds), at: 0)
         
-        addSubviews(calendarHeaderView, calendarCollectionView)
+        addSubviews(calendarHeaderView, calendarCollectionViewHeader, calendarCollectionView)
     }
     
     
@@ -69,8 +75,13 @@ class CalendarView: UIView {
             calendarHeaderView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 18),
             calendarHeaderView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -18),
             
+            calendarCollectionViewHeader.heightAnchor.constraint(equalToConstant: 40),
+            calendarCollectionViewHeader.topAnchor.constraint(equalTo: calendarHeaderView.safeAreaLayoutGuide.bottomAnchor, constant: 40),
+            calendarCollectionViewHeader.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            calendarCollectionViewHeader.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            
             calendarCollectionView.heightAnchor.constraint(equalToConstant: 300),
-            calendarCollectionView.topAnchor.constraint(equalTo: calendarHeaderView.safeAreaLayoutGuide.bottomAnchor),
+            calendarCollectionView.topAnchor.constraint(equalTo: calendarCollectionViewHeader.safeAreaLayoutGuide.bottomAnchor, constant: 40),
             calendarCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 24),
             calendarCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -24),
         ])
