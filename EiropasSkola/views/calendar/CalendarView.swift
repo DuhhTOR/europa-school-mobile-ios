@@ -19,15 +19,17 @@ class CalendarView: UIView {
         
         return calendarHeaderView
     }()
+
+    
+    // MARK: - Public variables
+    
     public let calendarCollectionViewHeader: CalendarCollectionViewHeader = {
         let calendarCollectionViewHeader = CalendarCollectionViewHeader()
+        calendarCollectionViewHeader.clipsToBounds = true
         calendarCollectionViewHeader.translatesAutoresizingMaskIntoConstraints = false
         
         return calendarCollectionViewHeader
     }()
-    
-    // MARK: - Public variables
-    
     public let calendarCollectionView: JTACMonthView = {
         let calendarCollectionView = JTACMonthView()
         calendarCollectionView.minimumLineSpacing = 0
@@ -76,7 +78,6 @@ class CalendarView: UIView {
             calendarHeaderView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 18),
             calendarHeaderView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -18),
             
-            calendarCollectionViewHeader.heightAnchor.constraint(equalToConstant: 40),
             calendarCollectionViewHeader.topAnchor.constraint(equalTo: calendarHeaderView.safeAreaLayoutGuide.bottomAnchor, constant: 40),
             calendarCollectionViewHeader.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             calendarCollectionViewHeader.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
