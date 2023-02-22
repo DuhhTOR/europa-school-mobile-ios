@@ -84,6 +84,11 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
         let startDate = Calendar.current.date(byAdding: .month, value: -3, to: Date())!
         let endDate = Calendar.current.date(byAdding: .month, value: 9, to: Date())!
         
+        Self.dateFormatter.dateFormat = "LLLL yyyy"
+        calendarView.calendarCollectionViewHeader.configureCurrentSelectedMonthLabel(
+            with: Self.dateFormatter.string(from: startDate)
+        )
+        
         return ConfigurationParameters(
             startDate: startDate,
             endDate: endDate,
