@@ -33,10 +33,10 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        calendarView.calendarCollectionViewHeader.delegate = self
         calendarView.calendarCollectionView.calendarDelegate = self
         calendarView.calendarCollectionView.calendarDataSource = self
-        calendarView.calendarCollectionView.scrollToDate(Date())
-        calendarView.calendarCollectionViewHeader.delegate = self
+        calendarView.calendarCollectionView.scrollToDate(Date(), animateScroll: false)
     }
 
 }
@@ -56,7 +56,8 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
         ) as! CalendarCellView
         
         self.calendar(
-            calendar, willDisplay: cell,
+            calendar,
+            willDisplay: cell,
             forItemAt: date,
             cellState: cellState,
             indexPath: indexPath

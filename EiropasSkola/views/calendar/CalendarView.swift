@@ -37,6 +37,7 @@ class CalendarView: UIView {
         calendarCollectionView.isPagingEnabled = true
         calendarCollectionView.backgroundColor = UIColor.clear
         calendarCollectionView.showsHorizontalScrollIndicator = false
+        calendarCollectionView.scrollingMode = .stopAtEachSection
         calendarCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return calendarCollectionView
