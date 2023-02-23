@@ -19,6 +19,28 @@ class CalendarView: UIView {
         
         return calendarHeaderView
     }()
+    private let dayStackViewContainerView: UIView = {
+        let dayStackViewContainerView = UIView()
+        dayStackViewContainerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return dayStackViewContainerView
+    }()
+    private let dayStackView: UIStackView = {
+        let dayStackView = UIStackView()
+        dayStackView.axis = .horizontal
+        dayStackView.distribution = .fillEqually
+        
+        return dayStackView
+    }()
+    private enum Days: String, CaseIterable {
+        case monday = "P"
+        case tuesday = "O"
+        case wednesday = "T"
+        case thursday = "C"
+        case friday = "Pk."
+        case saturday = "S"
+        case sunday = "Sv."
+    }
 
     
     // MARK: - Public variables
@@ -53,7 +75,7 @@ class CalendarView: UIView {
         
         self.layer.insertSublayer(CustomGradientLayer.pageGradientLayer(bounds: self.bounds), at: 0)
         
-        addSubviews(calendarHeaderView, calendarCollectionViewHeader, calendarCollectionView)
+        addSubviews(calendarHeaderView, calendarCollectionViewHeader, dayStackViewContainerView, calendarCollectionView)
     }
     
     
@@ -66,6 +88,13 @@ class CalendarView: UIView {
     
     override func layoutSubviews() {
         addConstraints()
+        
+        if
+            dayStackViewContainerView.frame.size.width != 0
+            && !dayStackView.isDescendant(of: dayStackViewContainerView)
+        {
+            configureDayStackView()
+        }
     }
     
     
@@ -82,11 +111,38 @@ class CalendarView: UIView {
             calendarCollectionViewHeader.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             calendarCollectionViewHeader.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             
-            calendarCollectionView.heightAnchor.constraint(equalToConstant: 300),
-            calendarCollectionView.topAnchor.constraint(equalTo: calendarCollectionViewHeader.safeAreaLayoutGuide.bottomAnchor, constant: 40),
+            dayStackViewContainerView.heightAnchor.constraint(equalToConstant: 48),
+            dayStackViewContainerView.topAnchor.constraint(equalTo: calendarCollectionViewHeader.safeAreaLayoutGuide.bottomAnchor, constant: 20),
+            dayStackViewContainerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            dayStackViewContainerView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            
+            calendarCollectionView.heightAnchor.constraint(equalToConstant: 248),
+            calendarCollectionView.topAnchor.constraint(equalTo: dayStackViewContainerView.safeAreaLayoutGuide.bottomAnchor),
             calendarCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 24),
             calendarCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -24),
         ])
+    }
+    
+    
+    private func configureDayStackView() {
+        dayStackView.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: dayStackViewContainerView.frame.size.width,
+            height: dayStackViewContainerView.frame.size.height
+        )
+        
+        for day in Days.allCases {
+            let dayLabel = UILabel()
+            dayLabel.text = day.rawValue
+            dayLabel.textAlignment = .center
+            dayLabel.font = UIFont(name: "IBMPlexSans-Medium", size: 14)
+            dayLabel.textColor = UIColor.calendarColors.label.outDate
+            
+            dayStackView.addArrangedSubview(dayLabel)
+        }
+        
+        dayStackViewContainerView.addSubview(dayStackView)
     }
     
 }
