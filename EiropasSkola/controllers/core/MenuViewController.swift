@@ -21,7 +21,6 @@ class MenuViewController: UIViewController {
     
     private let menuItems: [MenuItem] = {
        return [
-        .init(type: .home),
         .init(type: .calendar),
         .init(type: .planner),
         .init(type: .process),

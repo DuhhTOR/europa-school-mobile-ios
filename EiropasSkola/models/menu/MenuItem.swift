@@ -13,7 +13,6 @@ public struct MenuItem {
     // MARK: - Public variables
     
     public enum Pages: String {
-        case home = "Sākums"
         case calendar = "Kalendārs"
         case planner = "Plānotājs"
         case process = "Process"
@@ -25,9 +24,6 @@ public struct MenuItem {
         
         var icon: String {
             switch self {
-                case .home:
-                    return "house.fill"
-                    
                 case .calendar:
                     return "CalendarIcon"
                     

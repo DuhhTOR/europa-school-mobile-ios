@@ -185,11 +185,6 @@ extension ContainerViewController: MenuViewControllerDelegate {
     
     internal func didSelect(menuItem: MenuItem) {
         switch menuItem.type {
-            case .home:
-                resetHomeViewController()
-                didTapCloseMenuButton()
-                break
-                
             case .calendar:
                 changeViewController(viewController: calendarViewController)
                 break
