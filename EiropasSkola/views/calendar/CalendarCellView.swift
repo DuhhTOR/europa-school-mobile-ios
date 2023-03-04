@@ -30,6 +30,34 @@ class CalendarCellView: JTACDayCell {
                 
         return dayLabel
     }()
+    private lazy var eventIconView: UIView = {
+        let eventIconView = UIView()
+        let circleImageView1 = UIImageView()
+        let circleImageView2 = UIImageView()
+        let stackView = UIStackView()
+        
+        eventIconView.translatesAutoresizingMaskIntoConstraints = false
+        circleImageView1.image = UIImage(named: "CircleIcon.Orange")
+        circleImageView1.contentMode = .scaleAspectFit
+        circleImageView2.image = UIImage(named: "CircleIcon.Orange")
+        circleImageView2.contentMode = .scaleAspectFit
+        stackView.axis = .horizontal
+        stackView.distribution = .equalCentering
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.addArrangedSubview(circleImageView1)
+        stackView.addArrangedSubview(circleImageView2)
+        eventIconView.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: eventIconView.safeAreaLayoutGuide.topAnchor),
+            stackView.widthAnchor.constraint(equalToConstant: 14),
+            stackView.centerXAnchor.constraint(equalTo: eventIconView.safeAreaLayoutGuide.centerXAnchor),
+            stackView.bottomAnchor.constraint(equalTo: eventIconView.safeAreaLayoutGuide.bottomAnchor),
+        ])
+        
+        return eventIconView
+    }()
     
     // MARK: - Public variables
     
@@ -95,10 +123,23 @@ class CalendarCellView: JTACDayCell {
         dayLabelWrapperView.backgroundColor = backgroundColor
     }
     
+    
     public func configureDayLabelWrapperView(cornerRadius: CGFloat) {
         dayLabelWrapperView.clipsToBounds = true
         dayLabelWrapperView.layer.cornerRadius = cornerRadius
         dayLabelWrapperView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+    }
+    
+    
+    public func addEvent() {
+        dayLabelWrapperView.addSubview(eventIconView)
+        
+        NSLayoutConstraint.activate([
+            eventIconView.topAnchor.constraint(equalTo: dayLabel.safeAreaLayoutGuide.bottomAnchor),
+            eventIconView.leadingAnchor.constraint(equalTo: dayLabelWrapperView.safeAreaLayoutGuide.leadingAnchor),
+            eventIconView.trailingAnchor.constraint(equalTo: dayLabelWrapperView.safeAreaLayoutGuide.trailingAnchor),
+            eventIconView.bottomAnchor.constraint(equalTo: dayLabelWrapperView.safeAreaLayoutGuide.bottomAnchor),
+        ])
     }
     
 }
