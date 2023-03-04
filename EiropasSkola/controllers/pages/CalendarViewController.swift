@@ -21,6 +21,10 @@ class CalendarViewController: UIViewController {
     private let calendarView: CalendarView = {
         return CalendarView(frame: UIScreen.main.bounds)
     }()
+    private enum dateFormats: String {
+        case monthNameYear = "LLLL yyyy"
+        case yearMonthDay = "yyyy MM dd"
+    }
     private var events: [String] = [
         "2023 03 02",
         "2023 03 17",
@@ -89,7 +93,7 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
         let startDate = Calendar.current.date(byAdding: .month, value: -3, to: Date())!
         let endDate = Calendar.current.date(byAdding: .month, value: 9, to: Date())!
         
-        Self.dateFormatter.dateFormat = "LLLL yyyy"
+        Self.dateFormatter.dateFormat = dateFormats.monthNameYear.rawValue
         calendarView.calendarCollectionViewHeader.configureCurrentSelectedMonthLabel(
             with: Self.dateFormatter.string(from: startDate)
         )
@@ -113,7 +117,7 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
             timeInterval: TimeInterval(Calendar.current.timeZone.secondsFromGMT()),
             since: this_date as! Date
         )
-        Self.dateFormatter.dateFormat = "LLLL yyyy"
+        Self.dateFormatter.dateFormat = dateFormats.monthNameYear.rawValue
         
         calendarView.calendarCollectionViewHeader.configureCurrentSelectedMonthLabel(
             with: Self.dateFormatter.string(from: localDate)
@@ -132,7 +136,7 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
     
     
     private func handleCellStyling(cell: CalendarCellView, cellState: CellState) {
-        Self.dateFormatter.dateFormat = "yyyy MM dd"
+        Self.dateFormatter.dateFormat = dateFormats.yearMonthDay.rawValue
         
         if isDateHoliday(date: Self.dateFormatter.string(from: cellState.date)) {
             cell.configureDayLabel(textColor: UIColor.calendarColors.label.holiday)
@@ -168,7 +172,6 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
             cell.addEvent()
         }
     }
-    
     
     
     private func isDateHoliday(date: String) -> Bool {
