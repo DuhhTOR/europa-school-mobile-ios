@@ -92,13 +92,6 @@
 			path = controllers;
 			sourceTree = "<group>";
 		};
-		8A8AC5C5299185E8006F9E1A /* calendar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = calendar;
-			sourceTree = "<group>";
-		};
 		8A8BFE472976CBC0001834D6 /* core */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,7 +168,6 @@
 		8AD3D77129571D6D000A4576 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				8A8AC5C5299185E8006F9E1A /* calendar */,
 				8AD3D7742957267B000A4576 /* menu */,
 			);
 			path = models;

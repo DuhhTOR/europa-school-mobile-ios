@@ -21,6 +21,11 @@ class CalendarViewController: UIViewController {
     private let calendarView: CalendarView = {
         return CalendarView(frame: UIScreen.main.bounds)
     }()
+    private var events: [String] = [
+        "2023 03 02",
+        "2023 03 17",
+        "2023 03 20",
+    ]
     
 
     // MARK: - Lifecycle
@@ -157,6 +162,10 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
         } else {
             cell.configureDayLabelWrapperView(backgroundColor: UIColor.clear)
             cell.configureDayLabelWrapperView(cornerRadius: 0)
+        }
+        
+        if(events.contains(Self.dateFormatter.string(from: cellState.date))) {
+            cell.addEvent()
         }
     }
     
