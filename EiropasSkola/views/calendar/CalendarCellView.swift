@@ -11,9 +11,15 @@ import JTAppleCalendar
 
 class CalendarCellView: JTACDayCell {
     
-    // MARK: - Public variables
+    // MARK: - Private variables
     
-    public static let identifier = "CalendarCellView"
+    private let dayLabelWrapperView: UIView = {
+        let labelWrapperView = UIView()
+        labelWrapperView.layer.cornerRadius = 2
+        labelWrapperView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return labelWrapperView
+    }()
     private let dayLabel: UILabel = {
         let dayLabel = UILabel()
         dayLabel.font = UIFont(name: "IBMPlexSans-Medium", size: 14)
@@ -25,13 +31,18 @@ class CalendarCellView: JTACDayCell {
         return dayLabel
     }()
     
+    // MARK: - Public variables
+    
+    public static let identifier = "CalendarCellView"
+    
     
     // MARK: - Initialisation
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(dayLabel)
+        dayLabelWrapperView.addSubview(dayLabel)
+        addSubview(dayLabelWrapperView)
     }
     
     
@@ -51,10 +62,14 @@ class CalendarCellView: JTACDayCell {
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
+            dayLabelWrapperView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            dayLabelWrapperView.widthAnchor.constraint(equalToConstant: 28),
+            dayLabelWrapperView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            dayLabelWrapperView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            
             dayLabel.widthAnchor.constraint(equalToConstant: 28),
             dayLabel.heightAnchor.constraint(equalToConstant: 28),
-            dayLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-            dayLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            dayLabel.centerYAnchor.constraint(equalTo: dayLabelWrapperView.safeAreaLayoutGuide.centerYAnchor),
         ])
     }
     
@@ -73,6 +88,17 @@ class CalendarCellView: JTACDayCell {
     
     public func configureDayLabel(backgroundColor: UIColor) {
         dayLabel.backgroundColor = backgroundColor
+    }
+    
+    
+    public func configureDayLabelWrapperView(backgroundColor: UIColor) {
+        dayLabelWrapperView.backgroundColor = backgroundColor
+    }
+    
+    public func configureDayLabelWrapperView(cornerRadius: CGFloat) {
+        dayLabelWrapperView.clipsToBounds = true
+        dayLabelWrapperView.layer.cornerRadius = cornerRadius
+        dayLabelWrapperView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
     }
     
 }

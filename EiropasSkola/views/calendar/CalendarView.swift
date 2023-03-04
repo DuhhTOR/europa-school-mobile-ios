@@ -133,13 +133,31 @@ class CalendarView: UIView {
         )
         
         for day in Days.allCases {
+            let dayLabelWrapperView = UIView()
             let dayLabel = UILabel()
             dayLabel.text = day.rawValue
             dayLabel.textAlignment = .center
             dayLabel.font = UIFont(name: "IBMPlexSans-Medium", size: 14)
             dayLabel.textColor = UIColor.calendarColors.label.outDate
+            dayLabel.translatesAutoresizingMaskIntoConstraints = false
             
-            dayStackView.addArrangedSubview(dayLabel)
+            if (day == .monday) {
+                dayLabel.backgroundColor = UIColor.calendarColors.cell.firstDayOfWeek
+                dayLabel.clipsToBounds = true
+                dayLabel.layer.cornerRadius = 2
+                dayLabel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            }
+            
+            dayLabelWrapperView.addSubview(dayLabel)
+            
+            NSLayoutConstraint.activate([
+                dayLabel.widthAnchor.constraint(equalToConstant: 28),
+                dayLabel.topAnchor.constraint(equalTo: dayLabelWrapperView.safeAreaLayoutGuide.topAnchor),
+                dayLabel.centerXAnchor.constraint(equalTo: dayLabelWrapperView.safeAreaLayoutGuide.centerXAnchor),
+                dayLabel.bottomAnchor.constraint(equalTo: dayLabelWrapperView.safeAreaLayoutGuide.bottomAnchor),
+            ])
+            
+            dayStackView.addArrangedSubview(dayLabelWrapperView)
         }
         
         dayStackViewContainerView.addSubview(dayStackView)

@@ -145,6 +145,19 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
             cell.configureDayLabel(textColor: UIColor.calendarColors.label.normal)
             cell.configureDayLabel(backgroundColor: UIColor.clear)
         }
+        
+        if cellState.day == .monday {
+            let currentRow = cellState.row()
+            
+            if (currentRow == 4 || currentRow == 5) {
+                cell.configureDayLabelWrapperView(cornerRadius: 2)
+            }
+            
+            cell.configureDayLabelWrapperView(backgroundColor: UIColor.calendarColors.cell.firstDayOfWeek)
+        } else {
+            cell.configureDayLabelWrapperView(backgroundColor: UIColor.clear)
+            cell.configureDayLabelWrapperView(cornerRadius: 0)
+        }
     }
     
     
