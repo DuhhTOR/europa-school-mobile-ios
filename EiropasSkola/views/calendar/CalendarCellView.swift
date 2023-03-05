@@ -62,6 +62,7 @@ class CalendarCellView: JTACDayCell {
     // MARK: - Public variables
     
     public static let identifier = "CalendarCellView"
+    public var isEventSet: Bool = false
     
     
     // MARK: - Initialisation
@@ -140,6 +141,8 @@ class CalendarCellView: JTACDayCell {
             eventIconView.trailingAnchor.constraint(equalTo: dayLabelWrapperView.safeAreaLayoutGuide.trailingAnchor),
             eventIconView.bottomAnchor.constraint(equalTo: dayLabelWrapperView.safeAreaLayoutGuide.bottomAnchor),
         ])
+        
+        isEventSet = true
     }
     
 }
