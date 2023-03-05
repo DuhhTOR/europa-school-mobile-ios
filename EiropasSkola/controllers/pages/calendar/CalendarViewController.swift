@@ -124,6 +124,19 @@ extension CalendarViewController: JTACMonthViewDelegate, JTACMonthViewDataSource
         )
     }
     
+    func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
+        guard let cell = cell as? CalendarCellView else {
+            return
+        }
+        
+        if (cell.isEventSet) {
+            self.present(EventViewController(), animated: true, completion: nil)
+        }
+    }
+    
+    func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
+    }
+    
     
     private func configureCell(view: JTACDayCell?, cellState: CellState) {
         guard let cell = view as? CalendarCellView else {
